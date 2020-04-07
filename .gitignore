@@ -105,3 +105,6 @@ WebApi/TenantsAssociation.ApplicationLogic/obj/Debug/netcoreapp3.1/TenantsAssoci
 WebApi/TenantsAssociation.ApplicationLogic/bin/Debug/netcoreapp3.1/TenantsAssociation.ApplicationLogic.deps.json
 WebApi/TenantsAssociation.ApplicationLogic/bin/Debug/netcoreapp3.1/TenantsAssociation.ApplicationLogic.dll
 WebApi/TenantsAssociation.ApplicationLogic/bin/Debug/netcoreapp3.1/TenantsAssociation.ApplicationLogic.pdb
+WebApi/TenantsAssociation.ApplicationLogic/obj/project.nuget.cache
+WebApi/TenantsAssociation.DataAccess/obj/project.nuget.cache
+WebApi/TenantsAssociation/obj/project.nuget.cache
