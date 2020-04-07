@@ -108,3 +108,4 @@ WebApi/TenantsAssociation.ApplicationLogic/bin/Debug/netcoreapp3.1/TenantsAssoci
 WebApi/TenantsAssociation.ApplicationLogic/obj/project.nuget.cache
 WebApi/TenantsAssociation.DataAccess/obj/project.nuget.cache
 WebApi/TenantsAssociation/obj/project.nuget.cache
+WebApi/TenantsAssociation/.vs/TenantsAssociation/DesignTimeBuild/.dtbcache.v2
