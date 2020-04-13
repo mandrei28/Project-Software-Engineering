@@ -17,6 +17,6 @@ namespace TenantsAssociation.DataAccess
         public DbSet<Poll> Polls { get; set; }
         public DbSet<PollResults> PollResults { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
     }
 }

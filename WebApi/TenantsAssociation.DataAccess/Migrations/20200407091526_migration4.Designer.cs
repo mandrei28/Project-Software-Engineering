@@ -3,35 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TenantsAssociation.DataAccess;
 
 namespace TenantsAssociation.DataAccess.Migrations
 {
     [DbContext(typeof(TenantsAssociationDbContext))]
-    partial class TenantsAssociationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200407091526_migration4")]
+    partial class migration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Administrator", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Administrators");
-                });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Apartment", b =>
                 {
@@ -63,9 +51,6 @@ namespace TenantsAssociation.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AdministratorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("BuildingNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -76,8 +61,6 @@ namespace TenantsAssociation.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdministratorId");
 
                     b.ToTable("Building");
                 });
@@ -163,9 +146,28 @@ namespace TenantsAssociation.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("UserTypeId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserTypeId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.UserType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserTypes");
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Apartment", b =>
@@ -177,13 +179,6 @@ namespace TenantsAssociation.DataAccess.Migrations
                     b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Building", b =>
-                {
-                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Administrator", null)
-                        .WithMany("Buildings")
-                        .HasForeignKey("AdministratorId");
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Invoice", b =>
@@ -205,6 +200,13 @@ namespace TenantsAssociation.DataAccess.Migrations
                     b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Poll", "Poll")
                         .WithMany()
                         .HasForeignKey("PollId");
+                });
+
+            modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.User", b =>
+                {
+                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId");
                 });
 #pragma warning restore 612, 618
         }
