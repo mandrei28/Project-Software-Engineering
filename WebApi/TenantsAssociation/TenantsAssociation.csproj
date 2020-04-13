@@ -11,9 +11,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TenantsAssociation.ApplicationLogic\TenantsAssociation.ApplicationLogic.csproj" />
     <ProjectReference Include="..\TenantsAssociation.DataAccess\TenantsAssociation.DataAccess.csproj" />
   </ItemGroup>
 

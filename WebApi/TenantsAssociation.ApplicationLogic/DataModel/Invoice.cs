@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TenantsAssociation.ApplicationLogic.DataModel
@@ -11,8 +13,11 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public Apartment Apartment { get; set; }
         public float Bill { get; set; }
         public string Description { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime CreatedDate { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime DueDate { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime PayDate { get; set; }
     }
 }
