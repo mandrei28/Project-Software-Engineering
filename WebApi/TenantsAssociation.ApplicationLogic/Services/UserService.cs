@@ -15,7 +15,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
         {
             this.userRepository = userRepository;
         }
-        public List<Invoice> GetUserInvoices(string userId)
+        public IEnumerable<Invoice> GetUserInvoices(string userId)
         {
             Guid userIdGuid = Guid.Empty;
             if (!Guid.TryParse(userId, out userIdGuid))

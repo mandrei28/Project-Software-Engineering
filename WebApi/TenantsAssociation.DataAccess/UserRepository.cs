@@ -12,11 +12,11 @@ namespace TenantsAssociation.DataAccess
         public UserRepository(TenantsAssociationDbContext dbContext) : base(dbContext)
         {
         }
-        public List<Invoice> GetUserInvoices(Guid userId)
+        public IEnumerable<Invoice> GetUserInvoices(Guid userId)
         {
             var apartments = dbContext.Apartments.Where(apartment => apartment.User.Id == userId).Select(apartment => apartment.Id).ToList();
             var invoices = dbContext.Invoices.Where(invoice => apartments.Contains<Guid>(invoice.Apartment.Id));
-            return invoices.ToList();
+            return invoices.AsEnumerable();
         }
     }
 }

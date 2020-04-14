@@ -18,7 +18,7 @@ namespace TenantsAssociation.Controllers
             this.userService = userService;
         }
         [HttpGet("invoices/{userId}")]
-        public ActionResult<List<Invoice>> GetUserInvoices(string userId)
+        public IEnumerable<Invoice> GetUserInvoices(string userId)
         {
             var invoices = userService.GetUserInvoices(userId);
             return invoices;

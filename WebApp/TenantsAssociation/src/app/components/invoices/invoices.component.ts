@@ -33,8 +33,8 @@ export class InvoicesComponent implements OnInit {
     this.http
       .get<InvoiceModel[]>('https://localhost:44365/user/invoices/' + userId)
       .subscribe((response) => {
+        console.log(response);
         this.invoices = response;
-        console.log(this.invoices);
         this.dataSource = new MatTableDataSource<InvoiceModel>(this.invoices);
         this.dataSource.paginator = this.paginator;
       });
