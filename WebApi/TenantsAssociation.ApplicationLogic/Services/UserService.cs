@@ -15,19 +15,5 @@ namespace TenantsAssociation.ApplicationLogic.Services
         {
             this.userRepository = userRepository;
         }
-        public IEnumerable<Invoice> GetUserInvoices(string userId)
-        {
-            Guid userIdGuid = Guid.Empty;
-            if (!Guid.TryParse(userId, out userIdGuid))
-            {
-                throw new Exception("Invalid Guid format");
-            }
-            var invoices = userRepository.GetUserInvoices(userIdGuid);
-            if (!invoices.Any())
-            {
-                throw new UserHasNoInvoiceException(userIdGuid);
-            }
-            return invoices;
-        }
     }
 }

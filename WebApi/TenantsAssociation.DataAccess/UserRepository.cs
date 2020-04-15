@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,10 @@ namespace TenantsAssociation.DataAccess
         public UserRepository(TenantsAssociationDbContext dbContext) : base(dbContext)
         {
         }
-        public IEnumerable<Invoice> GetUserInvoices(Guid userId)
+        public User GetUserByUserId(Guid userId)
         {
-            var apartments = dbContext.Apartments.Where(apartment => apartment.User.Id == userId).Select(apartment => apartment.Id).ToList();
-            var invoices = dbContext.Invoices.Where(invoice => apartments.Contains<Guid>(invoice.Apartment.Id));
-            return invoices.AsEnumerable();
+            var user = dbContext.Users.Where(u => u.Id == userId).Include(u => u.Apartments).ThenInclude(a => a.Invoices).FirstOrDefault();
+            return user;
         }
     }
 }

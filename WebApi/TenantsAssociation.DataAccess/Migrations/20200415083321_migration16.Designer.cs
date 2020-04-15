@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TenantsAssociation.DataAccess;
 
 namespace TenantsAssociation.DataAccess.Migrations
 {
     [DbContext(typeof(TenantsAssociationDbContext))]
-    partial class TenantsAssociationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200415083321_migration16")]
+    partial class migration16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,21 +176,21 @@ namespace TenantsAssociation.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("BuildingId");
 
-                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.User", null)
+                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.User", "User")
                         .WithMany("Apartments")
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Building", b =>
                 {
-                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Administrator", null)
+                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Administrator", "Administrator")
                         .WithMany("Buildings")
                         .HasForeignKey("AdministratorId");
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Invoice", b =>
                 {
-                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Apartment", null)
+                    b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Apartment", "Apartment")
                         .WithMany("Invoices")
                         .HasForeignKey("ApartmentId");
                 });

@@ -5,7 +5,7 @@ using TenantsAssociation.ApplicationLogic.DataModel;
 
 namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
-    interface IAdministratorRepository : IRepository<Administrator>
+    public interface IAdministratorRepository : IRepository<Administrator>
     {
     }
 }

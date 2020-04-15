@@ -31,7 +31,7 @@ export class InvoicesComponent implements OnInit {
   getInvoices() {
     const userId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
     this.http
-      .get<InvoiceModel[]>('https://localhost:44365/user/invoices/' + userId)
+      .get<InvoiceModel[]>('https://localhost:44365/invoice/' + userId)
       .subscribe((response) => {
         console.log(response);
         this.invoices = response;

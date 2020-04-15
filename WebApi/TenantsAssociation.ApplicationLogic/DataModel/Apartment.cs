@@ -6,9 +6,13 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
 {
     public class Apartment
     {
+        public Apartment()
+        {
+            Invoices = new List<Invoice>();
+        }
         public Guid Id { get; set; }
         public int ApartmentNumber { get; set; }
-        public User User { get; set; }
         public Building Building { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

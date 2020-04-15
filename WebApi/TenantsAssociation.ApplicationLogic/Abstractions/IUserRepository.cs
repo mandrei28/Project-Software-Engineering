@@ -6,6 +6,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
     public interface IUserRepository : IRepository<User>
     {
-        IEnumerable<Invoice> GetUserInvoices(Guid userId);
+        User GetUserByUserId(Guid userId);
     }
 }

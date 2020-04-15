@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TenantsAssociation.DataAccess;
 
 namespace TenantsAssociation.DataAccess.Migrations
 {
     [DbContext(typeof(TenantsAssociationDbContext))]
-    partial class TenantsAssociationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200415081453_migration15")]
+    partial class migration15
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +47,7 @@ namespace TenantsAssociation.DataAccess.Migrations
                     b.Property<Guid?>("BuildingId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -88,7 +90,7 @@ namespace TenantsAssociation.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApartmentId")
+                    b.Property<Guid>("ApartmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<float>("Bill")
@@ -176,7 +178,9 @@ namespace TenantsAssociation.DataAccess.Migrations
 
                     b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.User", null)
                         .WithMany("Apartments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Building", b =>
@@ -190,7 +194,9 @@ namespace TenantsAssociation.DataAccess.Migrations
                 {
                     b.HasOne("TenantsAssociation.ApplicationLogic.DataModel.Apartment", null)
                         .WithMany("Invoices")
-                        .HasForeignKey("ApartmentId");
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TenantsAssociation.ApplicationLogic.DataModel.Poll", b =>
