@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TenantsAssociation.ApplicationLogic.Abstractions;
+using TenantsAssociation.ApplicationLogic.Services;
+using TenantsAssociation.DataAccess;
 
 namespace TenantsAssociation
 {
@@ -26,6 +30,22 @@ namespace TenantsAssociation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
+            services.AddDbContext<TenantsAssociationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<UserService>();
+            services.AddScoped<InvoiceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +59,10 @@ namespace TenantsAssociation
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(
+                "AllowAllHeaders"
+            );
 
             app.UseAuthorization();
 
