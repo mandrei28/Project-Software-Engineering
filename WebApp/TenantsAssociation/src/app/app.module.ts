@@ -11,10 +11,24 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogPoolComponent } from './components/dashboard-admin/dialog-pool/dialog-pool.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, InvoicesComponent, DashboardUserComponent],
+  declarations: [
+    AppComponent,
+    InvoicesComponent,
+    DashboardUserComponent,
+    DashboardAdminComponent,
+    DialogPoolComponent
+  ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -23,8 +37,12 @@ import { MatSortModule } from '@angular/material/sort';
     FlexLayoutModule,
     HttpClientModule,
     MatSortModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

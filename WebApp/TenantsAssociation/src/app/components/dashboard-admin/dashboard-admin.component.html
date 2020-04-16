@@ -1,0 +1,31 @@
+<h1 fxLayoutAlign="center" id="text">Dashboard</h1>
+<div fxLayout="row" fxLayoutAlign="space-around center" class="dashboard">
+  <div fxFlex="60">
+    <h3>New Message</h3>
+    <p>
+      When will be .....
+    </p>
+  </div>
+  <div fxLayout="column">
+    <div>
+      <button class="button" mat-raised-button (click)="openDialog()">
+        Add User
+      </button>
+    </div>
+    <div>
+      <button class="button" mat-raised-button (click)="openDialog()">
+        Add Invoice
+      </button>
+    </div>
+    <div>
+      <button class="button" mat-raised-button (click)="openDialog()">
+        Add Pool
+      </button>
+    </div>
+    <div>
+      <button class="button" mat-raised-button (click)="openDialog()">
+        Send Message
+      </button>
+    </div>
+  </div>
+</div>

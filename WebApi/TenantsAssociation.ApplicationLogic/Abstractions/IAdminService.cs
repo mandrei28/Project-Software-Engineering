@@ -5,8 +5,9 @@ using TenantsAssociation.ApplicationLogic.DataModel;
 
 namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
-    public interface IAdministratorRepository 
+    public interface IAdminService
     {
         MessageModel GetLastMessage(Guid id);
+
     }
 }

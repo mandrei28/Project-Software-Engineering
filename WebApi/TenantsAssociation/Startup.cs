@@ -44,6 +44,8 @@ namespace TenantsAssociation
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IAdministratorRepository, AdminRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<InvoiceService>();
         }
