@@ -10,3 +10,10 @@ export class InvoiceModel {
   dueDate: Date;
   payDate: Date;
 }
+
+export class MessageModel {
+  id: string;
+  text: string;
+  userId: string;
+  administratorId: string;
+}

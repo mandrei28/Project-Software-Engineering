@@ -8,6 +8,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
     public interface IAdminService
     {
         MessageModel GetLastMessage(Guid id);
+        void CreatePoll(Poll poll);
 
     }
 }

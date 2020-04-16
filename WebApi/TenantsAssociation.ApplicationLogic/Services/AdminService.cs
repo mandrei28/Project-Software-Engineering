@@ -18,7 +18,12 @@ namespace TenantsAssociation.ApplicationLogic.Services
 
         public MessageModel GetLastMessage(Guid id)
         {
-            return new MessageModel();
+            return _repository.GetLastMessage(id);
+        }
+
+        public void CreatePoll(Poll poll)
+        {
+            _repository.CreatePoll(poll);
         }
     }
 }

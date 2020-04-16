@@ -12,7 +12,7 @@ namespace TenantsAssociation.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
-        private AdminController(AdminService adminService)
+        public AdminController(IAdminService adminService)
         {
             _adminService = adminService;
         }
@@ -21,6 +21,12 @@ namespace TenantsAssociation.Controllers
         public MessageModel GetLastMessage(Guid adminId) 
         {
             return _adminService.GetLastMessage(adminId);
+        }
+
+        [HttpGet("createPoll")]
+        public void CreatePoll(Poll poll)
+        {
+            _adminService.CreatePoll(poll);
         }
     }
 
