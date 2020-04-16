@@ -11,10 +11,28 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
-
+import { RegisterComponent } from './components/register/register.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
-  declarations: [AppComponent, InvoicesComponent, DashboardUserComponent],
+  declarations: [
+    AppComponent,
+    InvoicesComponent,
+    DashboardUserComponent,
+    RegisterComponent,
+  ],
   imports: [
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -24,6 +42,7 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatSortModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

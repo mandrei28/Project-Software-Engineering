@@ -15,5 +15,12 @@ namespace TenantsAssociation.ApplicationLogic.Services
         {
             this.userRepository = userRepository;
         }
+        public void Register(User user)
+        {
+            if (this.userRepository.CheckIfEmailExists(user.Email))
+                throw new UserAlreadyExistsException(user.Email);
+            this.userRepository.Add(user);
+        }
     }
+
 }

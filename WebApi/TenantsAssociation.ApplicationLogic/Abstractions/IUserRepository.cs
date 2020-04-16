@@ -7,5 +7,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
     public interface IUserRepository : IRepository<User>
     {
         User GetUserByUserId(Guid userId);
+
+        bool CheckIfEmailExists(string email);
     }
 }
