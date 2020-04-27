@@ -1,7 +1,5 @@
-import { EmailValidator } from '@angular/forms';
-
-export class InvoiceModel {
-  username: string;
-  email: EmailValidator;
-  password: string;
+export class UserModel {
+  Email: string;
+  Name: string;
+  Password: string;
 }

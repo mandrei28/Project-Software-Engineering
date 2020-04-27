@@ -65,9 +65,10 @@
       color="primary"
       style="width: 90%;"
       [disabled]="
-          emailFormControl.value?.length &lt; 8 ||
-          passwordFormControl.value?.length &lt; 8
-        "
+        emailFormControl.value?.length &lt; 8 ||
+        passwordFormControl.value?.length &lt; 8
+      "
+      (click)="register()"
     >
       Sign up
     </button>

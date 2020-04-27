@@ -22,5 +22,4 @@ namespace TenantsAssociation.ApplicationLogic.Services
             this.userRepository.Add(user);
         }
     }
-
 }

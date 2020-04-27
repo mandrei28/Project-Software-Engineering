@@ -32,8 +32,5 @@ namespace TenantsAssociation.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
     }
-
-
 }
