@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { UserModel } from 'src/app/models/register.model';
+import { UserService } from 'src/app/services/user.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(8),
   ]);
+  constructor(public userService: UserService) {}
 
   getErrorMessage() {
     return this.passwordFormControl.hasError('required')
@@ -46,4 +49,12 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {}
+  register() {
+    let user: UserModel = {
+      Email: this.emailFormControl.value,
+      Name: 'Dragos',
+      Password: this.passwordFormControl.value,
+    };
+    this.userService.register(user);
+  }
 }
