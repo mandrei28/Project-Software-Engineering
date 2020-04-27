@@ -34,5 +34,4 @@ namespace TenantsAssociation.ApplicationLogic.Services
                 throw new WrongCredentialsException(user.Email);
         }
     }
-
 }

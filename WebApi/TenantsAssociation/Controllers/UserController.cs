@@ -47,8 +47,5 @@ namespace TenantsAssociation.Controllers
             });
 
         }
-
     }
-
-
 }
