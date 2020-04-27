@@ -1,0 +1,9 @@
+WebApi/TenantsAssociation.ApplicationLogic/bin/
+WebApi/TenantsAssociation.ApplicationLogic/obj/
+WebApi/TenantsAssociation.DataAccess/bin/Debug/netcoreapp3.1/TenantsAssociation.ApplicationLogic.dll
+WebApi/TenantsAssociation.DataAccess/bin/
+WebApi/TenantsAssociation.DataAccess/obj/
+WebApi/TenantsAssociation/.vs/
+WebApi/TenantsAssociation/bin/
+WebApi/TenantsAssociation/obj/
+WebApp/TenantsAssociation/node_modules/
