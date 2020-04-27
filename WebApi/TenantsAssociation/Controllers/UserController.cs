@@ -32,6 +32,21 @@ namespace TenantsAssociation.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody]User user)
+        {
+            var token = userService.Login(user);
+
+            if (token == null)
+                return Unauthorized();
+
+            return Ok(new
+            {
+                Token = token
+            });
+
+        }
 
     }
 
