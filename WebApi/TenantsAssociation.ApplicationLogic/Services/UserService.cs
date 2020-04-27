@@ -25,9 +25,10 @@ namespace TenantsAssociation.ApplicationLogic.Services
         }
         public string Login(User user)
         {
-            if (userRepository.CheckUserCredentials(user))
+            var userDbo = userRepository.CheckUserCredentials(user);
+            if (userDbo != null)
             {
-                var token = tokenCreator.CreateToken(user.Id, user.Name, user.Email);
+                var token = tokenCreator.CreateToken(userDbo.Id, userDbo.Name, userDbo.Email);
                 return token;
             }
             else

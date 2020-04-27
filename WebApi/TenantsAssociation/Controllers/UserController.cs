@@ -34,7 +34,7 @@ namespace TenantsAssociation.Controllers
         }
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody]User user)
+        public IActionResult Authenticate([FromBody]User user)
         {
             var token = userService.Login(user);
 

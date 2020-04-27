@@ -109,3 +109,5 @@ WebApi/TenantsAssociation.ApplicationLogic/obj/project.nuget.cache
 WebApi/TenantsAssociation.DataAccess/obj/project.nuget.cache
 WebApi/TenantsAssociation/obj/project.nuget.cache
 WebApi/TenantsAssociation/.vs/TenantsAssociation/DesignTimeBuild/.dtbcache.v2
+WebApi/TenantsAssociation/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+WebApi/TenantsAssociation/bin/

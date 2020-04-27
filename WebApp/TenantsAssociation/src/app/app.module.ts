@@ -18,12 +18,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
     InvoicesComponent,
     DashboardUserComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     MatCheckboxModule,
@@ -43,7 +46,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSortModule,
   ],
 
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
