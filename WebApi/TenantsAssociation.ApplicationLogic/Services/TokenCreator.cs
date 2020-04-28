@@ -19,7 +19,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
         public string CreateToken(Guid userId, string name, string email)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("secrettttttttttttttttttttttttttt");
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

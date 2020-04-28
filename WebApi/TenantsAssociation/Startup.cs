@@ -48,7 +48,6 @@ namespace TenantsAssociation
             );
 
             var secret = Configuration["AppSettings:Secret"];
-            services.Configure<AppSettings>(Configuration.GetSection("Secret"));
             var key = Encoding.ASCII.GetBytes(secret);
 
             services.AddAuthentication(x =>
@@ -68,6 +67,7 @@ namespace TenantsAssociation
                     ValidateAudience = false
                 };
             });
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<InvoiceService>();
