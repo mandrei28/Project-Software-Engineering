@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TenantsAssociation.ApplicationLogic.DataModel;
@@ -36,16 +37,18 @@ namespace TenantsAssociation.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]User user)
         {
-            var token = userService.Login(user);
-
-            if (token == null)
-                return Unauthorized();
-
-            return Ok(new
+            try
             {
-                Token = token
-            });
-
+                var token = userService.Login(user);
+                return Ok(new
+                {
+                    Token = token
+                });
+            }
+            catch
+            {
+                return Unauthorized();
+            }
         }
     }
 }

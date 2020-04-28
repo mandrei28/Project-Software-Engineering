@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 @Injectable({
@@ -8,6 +8,11 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   jwtHelper = new JwtHelperService();
+  private header = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: UserModel) {

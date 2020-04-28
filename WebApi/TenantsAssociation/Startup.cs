@@ -46,11 +46,10 @@ namespace TenantsAssociation
             services.AddDbContext<TenantsAssociationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-            var appSettings = appSettingsSection.Get<AppSettings>();
 
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            var secret = Configuration["AppSettings:Secret"];
+            services.Configure<AppSettings>(Configuration.GetSection("Secret"));
+            var key = Encoding.ASCII.GetBytes(secret);
 
             services.AddAuthentication(x =>
             {
