@@ -29,7 +29,7 @@ export class LoginComponent {
     return this.passwordFormControl.hasError('required')
       ? 'Password is required'
       : this.passwordFormControl.hasError('minlength')
-      ? 'Password must be at least 8 charahcters'
+      ? 'Password must be at least 8 characters'
       : '';
   }
 
