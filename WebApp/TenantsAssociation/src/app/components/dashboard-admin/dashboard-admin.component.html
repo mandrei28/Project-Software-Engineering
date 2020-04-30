@@ -3,27 +3,31 @@
   <div fxFlex="60">
     <h3>New Message</h3>
     <p>
-      {{ this.message }}
+      {{ message }}
     </p>
   </div>
   <div fxLayout="column">
     <div>
-      <button class="button" mat-raised-button (click)="openDialog()">
+      <button class="button" mat-raised-button (click)="openAddUserDialog()">
         Add User
       </button>
     </div>
     <div>
-      <button class="button" mat-raised-button (click)="openDialog()">
+      <button class="button" mat-raised-button (click)="openAddInvoiceDialog()">
         Add Invoice
       </button>
     </div>
     <div>
-      <button class="button" mat-raised-button (click)="openDialog()">
+      <button class="button" mat-raised-button (click)="openAddPoolDialog()">
         Add Pool
       </button>
     </div>
     <div>
-      <button class="button" mat-raised-button (click)="openDialog()">
+      <button
+        class="button"
+        mat-raised-button
+        (click)="openSendMessageDialog()"
+      >
         Send Message
       </button>
     </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
 
@@ -21,9 +22,23 @@ namespace TenantsAssociation.ApplicationLogic.Services
             return _repository.GetLastMessage(id);
         }
 
-        public void CreatePoll(Poll poll)
+        public async Task CreatePollAsync(Poll poll)
         {
-            _repository.CreatePoll(poll);
+            await _repository.CreatePollAsync(poll);
+        }
+        public async Task AddUserAsync(User user)
+        {
+            await _repository.AddUserASync(user);
+        }
+
+        public async Task AddInvoiceAsync(Invoice invoice)
+        {
+            await _repository.AddInvoiceAsync(invoice);
+        }
+
+        public async Task SendMessageAsync(MessageModel message)
+        {
+            await _repository.SendMessageAsync(message);
         }
     }
 }

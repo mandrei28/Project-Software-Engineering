@@ -6,12 +6,16 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { MessageModel } from 'src/app/models/invoice.model';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import {
+  MessageModel,
+  User,
+  Poll,
+  Invoice,
+} from 'src/app/models/invoice.model';
+import { DialogAddPollComponent } from './dialog-add-poll/dialog-add-poll.component';
+import { DialogAddInvoiceComponent } from './dialog-add-invoice/dialog-add-invoice.component';
+import { DialogSendMessageComponent } from './dialog-send-message/dialog-send-message.component';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -19,22 +23,67 @@ export interface DialogData {
   styleUrls: ['./dashboard-admin.component.scss'],
 })
 export class DashboardAdminComponent {
-  animal: string;
-  name: string;
   message: MessageModel;
+  user: User;
+  poll: Poll;
+  invoice: Invoice;
+  messageToSend: Message;
   constructor(public dialog: MatDialog, public http: HttpClient) {
     this.getLastMessage();
   }
 
-  openDialog(): void {
+  openAddUserDialog(): void {
     const dialogRef = this.dialog.open(DialogPoolComponent, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal },
+      width: '20em',
+      data: { name: ' ', mail: '', password: '' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.user = result;
+    });
+  }
+
+  openAddPoolDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPollComponent, {
+      width: '20em',
+      data: { question: '' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.poll = result;
+    });
+  }
+  openAddInvoiceDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddInvoiceComponent, {
+      width: '20em',
+      data: {
+        email: '',
+        invoiceNumber: '',
+        bill: '',
+        description: '',
+        createDate: '',
+        dueDate: '',
+        payDate: '',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.invoice = result;
+    });
+  }
+
+  openSendMessageDialog(): void {
+    const dialogRef = this.dialog.open(DialogSendMessageComponent, {
+      width: '20em',
+      data: { email: '', dateCreated: '', text: '' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.messageToSend = result;
     });
   }
 
@@ -45,6 +94,42 @@ export class DashboardAdminComponent {
       .subscribe((response) => {
         console.log(response);
         this.message = response;
+      });
+  }
+
+  sendMessage() {
+    this.http
+      .post<Invoice>(
+        'https://localhost:44365/admin/sendMessage',
+        this.messageToSend
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  createPoll() {
+    const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
+    this.http
+      .post<Invoice>('https://localhost:44365/admin/createPoll', this.poll)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  createUser() {
+    this.http
+      .post<Invoice>('https://localhost:44365/admin/createUser', this.user)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  postInvoice() {
+    this.http
+      .post<Invoice>('https://localhost:44365/admin/addInvoice', this.invoice)
+      .subscribe((response) => {
+        console.log(response);
       });
   }
 }

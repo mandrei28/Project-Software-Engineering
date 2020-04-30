@@ -21,10 +21,24 @@ namespace TenantsAssociation.DataAccess
             return message;
         }
 
-        public void CreatePoll(Poll poll)
+        public async Task CreatePollAsync(Poll poll)
         {
-            dbContext.Polls.Add(poll);
+            await dbContext.Polls.AddAsync(poll);
         }
 
+        public async Task AddUserASync(User user)
+        {
+            await dbContext.Users.AddAsync(user);
+        }
+
+        public async Task AddInvoiceAsync(Invoice invoice)
+        {
+           await dbContext.Invoices.AddAsync(invoice);
+        }
+
+        public async Task SendMessageAsync(MessageModel message)
+        {
+            await dbContext.Messages.AddAsync(message);
+        }
     }
 }

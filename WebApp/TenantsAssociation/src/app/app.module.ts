@@ -17,7 +17,11 @@ import { DialogPoolComponent } from './components/dashboard-admin/dialog-pool/di
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogAddPollComponent } from './components/dashboard-admin/dialog-add-poll/dialog-add-poll.component';
+import { DialogSendMessageComponent } from './components/dashboard-admin/dialog-send-message/dialog-send-message.component';
+import { DialogAddInvoiceComponent } from './components/dashboard-admin/dialog-add-invoice/dialog-add-invoice.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +29,14 @@ import { FormsModule } from '@angular/forms';
     InvoicesComponent,
     DashboardUserComponent,
     DashboardAdminComponent,
-    DialogPoolComponent
+    DialogPoolComponent,
+    DialogAddPollComponent,
+    DialogSendMessageComponent,
+    DialogAddInvoiceComponent,
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -40,9 +48,10 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
 import { GridAutoDirective } from '@angular/flex-layout/grid/typings/auto/auto';
+import { MatLine } from '@angular/material/core';
 
 export class InvoiceModel {
   id: string;
@@ -16,4 +17,29 @@ export class MessageModel {
   text: string;
   userId: string;
   administratorId: string;
+}
+
+export interface User {
+  name: string;
+  password: string;
+  mail: string;
+}
+
+export class Poll {
+  question: string;
+}
+export class Invoice {
+  email: string;
+  invoiceNumber: number;
+  bill: number;
+  description: string;
+  createDate: Date;
+  dueDate: Date;
+  payDate: Date;
+}
+
+export class Message {
+  email: string;
+  text: string;
+  dateCreated: Date;
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
 using TenantsAssociation.ApplicationLogic.Services;
@@ -24,9 +25,27 @@ namespace TenantsAssociation.Controllers
         }
 
         [HttpGet("createPoll")]
-        public void CreatePoll(Poll poll)
+        public async Task CreatePollAsync(Poll poll)
         {
-            _adminService.CreatePoll(poll);
+            await _adminService.CreatePollAsync(poll);
+        }
+
+        [HttpGet("addInvoice")]
+        public async Task AddInvoiceAsync(Invoice invoice)
+        {
+            await _adminService.AddInvoiceAsync(invoice);
+        }
+
+        [HttpGet("createUser")]
+        public async Task CreateUserAsync(User user)
+        {
+            await _adminService.AddUserAsync(user);
+        }
+
+        [HttpGet("sendMessage")]
+        public async Task SendMessageAsync(MessageModel message)
+        {
+            await _adminService.SendMessageAsync(message);
         }
     }
 
