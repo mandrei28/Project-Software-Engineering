@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ChartsModule } from 'ng2-charts';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FlexLayoutModule,
     HttpClientModule,
     MatSortModule,
+    ChartsModule,
+    MatRadioModule,
   ],
 
   providers: [],

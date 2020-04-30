@@ -1,0 +1,40 @@
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid #673ab7;
+  margin-right: 3vw;
+  padding: 1vw;
+}
+
+.flex-child:first-child {
+  margin-right: 4vw;
+  margin-left: 4vw;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.flex-container-pie {
+  display: flex;
+}
+.flex-child-pie {
+  flex: 1;
+  border: 2px;
+  margin-right: 3vw;
+  padding: 10px;
+  margin-left: 4vw;
+}
+
+.flex-child:first-child-pie {
+  margin-right: 4vw;
+  margin-left: 4vw;
+}
