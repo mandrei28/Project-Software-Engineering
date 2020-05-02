@@ -16,7 +16,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
         {
             _appSettings = appSettings.Value;
         }
-        public string CreateToken(Guid userId, string name, string email)
+        public string CreateToken(Guid userId, string name, string email, string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -26,7 +26,8 @@ namespace TenantsAssociation.ApplicationLogic.Services
                 {
                     new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
                     new Claim(ClaimTypes.Email, email),
-                    new Claim(ClaimTypes.Name, name)
+                    new Claim(ClaimTypes.Name, name),
+                    new Claim(ClaimTypes.Role, role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

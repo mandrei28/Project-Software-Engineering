@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -67,8 +68,16 @@ namespace TenantsAssociation
                     ValidateAudience = false
                 };
             });
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingEntity());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAdministratorRepository, AdministratorRepository>();
+            services.AddScoped<AdministratorService>();
             services.AddScoped<UserService>();
             services.AddScoped<InvoiceService>();
             services.AddSingleton<ITokenCreator, TokenCreator>();

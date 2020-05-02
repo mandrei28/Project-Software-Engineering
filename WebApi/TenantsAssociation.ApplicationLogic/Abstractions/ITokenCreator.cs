@@ -6,6 +6,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
     public interface ITokenCreator
     {
-        string CreateToken(Guid userId, string name, string email);
+        string CreateToken(Guid userId, string name, string email, string role);
     }
 }
