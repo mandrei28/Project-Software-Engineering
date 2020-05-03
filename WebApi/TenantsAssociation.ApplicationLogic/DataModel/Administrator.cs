@@ -6,6 +6,10 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
 {
     public class Administrator
     {
+        public Administrator()
+        {
+            Buildings = new List<Building>();
+        }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

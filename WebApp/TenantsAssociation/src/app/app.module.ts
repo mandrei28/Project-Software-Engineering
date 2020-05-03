@@ -20,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
+import { YourAccountComponent } from './components/your-account/your-account.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { AuthGuard } from './services/auth.guard';
     DashboardUserComponent,
     RegisterComponent,
     LoginComponent,
+    YourAccountComponent,
   ],
   imports: [
     MatCheckboxModule,
@@ -44,6 +47,7 @@ import { AuthGuard } from './services/auth.guard';
     FlexLayoutModule,
     HttpClientModule,
     MatSortModule,
+    MatExpansionModule,
   ],
 
   providers: [AuthGuard],

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 using TenantsAssociation.ApplicationLogic.Exceptions;
 
 namespace TenantsAssociation.ApplicationLogic.Services
@@ -48,6 +49,77 @@ namespace TenantsAssociation.ApplicationLogic.Services
                 }
             }
             throw new WrongCredentialsException(user.Email);
+        }
+
+        public void ChangeName(YourAccountName name, Guid userId)
+        {
+            var user = userRepository.GetUserByUserId(userId);
+            if (user != null)
+            {
+                user.Name = name.name;
+                userRepository.Update(user);
+            }
+            else
+            {
+                var admin = administratorRepository.GetAdministratorByUserId(userId);
+                if (admin != null)
+                {
+                    admin.Name = name.name;
+                    administratorRepository.Update(admin);
+                }
+                else
+                    throw new Exception();
+            }
+        }
+        public void ChangePassword(YourAccountPassword password, Guid userId)
+        {
+            var user = userRepository.GetUserByUserId(userId);
+            if (user != null)
+            {
+                if (user.Password == password.currentPassword)
+                {
+                    user.Password = password.newPassword;
+                    userRepository.Update(user);
+                }
+                else
+                    throw new Exception();
+            }
+            else
+            {
+                var admin = administratorRepository.GetAdministratorByUserId(userId);
+                if (admin != null)
+                {
+                    if (admin.Password == password.currentPassword)
+                    {
+                        admin.Password = password.newPassword;
+                        administratorRepository.Update(admin);
+                    }
+                    else
+                        throw new Exception();
+                }
+                else
+                    throw new Exception();
+            }
+        }
+        public void ChangeEmail(YourAccountEmail email, Guid userId)
+        {
+            var user = userRepository.GetUserByUserId(userId);
+            if (user != null)
+            {
+                user.Email = email.email;
+                userRepository.Update(user);
+            }
+            else
+            {
+                var admin = administratorRepository.GetAdministratorByUserId(userId);
+                if (admin != null)
+                {
+                    admin.Email = email.email;
+                    administratorRepository.Update(admin);
+                }
+                else
+                    throw new Exception();
+            }
         }
     }
 }

@@ -8,11 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   jwtHelper = new JwtHelperService();
-  private header = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
+
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: UserModel) {
