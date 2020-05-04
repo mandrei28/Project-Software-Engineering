@@ -49,7 +49,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
             {
                 UserId = administratorRepository.GetAdministratorByEmail(message.Email),
                 Text = message.Text,
-                AdministratorId = message.AdministratorId,
+                AdministratorId = Guid.Parse(message.AdministratorId),
                 DateCreated = DateTime.Now
             };
         }

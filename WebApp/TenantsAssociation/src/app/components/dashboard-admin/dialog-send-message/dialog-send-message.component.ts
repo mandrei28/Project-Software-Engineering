@@ -34,7 +34,7 @@ export class DialogSendMessageComponent {
   }
 
   sendMessage() {
-    this.data.adminId = this.userService.getUserId();
+    this.data.administratorId = this.userService.getUserId();
     this.http
       .post<Message>('https://localhost:44365/Admin/sendMessage', this.data)
       .subscribe((response) => {
