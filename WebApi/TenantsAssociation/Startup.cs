@@ -77,7 +77,7 @@ namespace TenantsAssociation
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAdministratorRepository, AdministratorRepository>();
-            services.AddScoped<AdministratorService>();
+            services.AddScoped<IAdministratorService, AdministratorService>();
             services.AddScoped<UserService>();
             services.AddScoped<InvoiceService>();
             services.AddSingleton<ITokenCreator, TokenCreator>();

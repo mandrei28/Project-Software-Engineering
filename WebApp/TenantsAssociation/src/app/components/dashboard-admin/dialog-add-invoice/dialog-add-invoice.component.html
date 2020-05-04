@@ -1,0 +1,71 @@
+<div class="popup">
+  <h1 mat-dialog-title>Create a new poll</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.email"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Invoice No</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.invoiceNumber"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bill</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.bill"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Created Date</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.createDate"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Due Date</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.dueDate"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pay Date</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.payDate"
+        [formControl]="validator"
+        required
+      />
+      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" [disabled]="isDisabled()">
+      Ok
+    </button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="popup">
+  <h1 mat-dialog-title>Create a new poll</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Your Qusetion</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.question"
+        [formControl]="questionValidator"
+        required
+      />
+      <mat-error *ngIf="questionValidator.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" [disabled]="isDisabled()">
+      Ok
+    </button>
+  </div>
+</div>

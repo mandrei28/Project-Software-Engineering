@@ -20,6 +20,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChartsModule } from 'ng2-charts';
 import { MatRadioModule } from '@angular/material/radio';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { DialogPoolComponent } from './components/dashboard-admin/dialog-pool/dialog-pool.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogAddPollComponent } from './components/dashboard-admin/dialog-add-poll/dialog-add-poll.component';
+import { DialogSendMessageComponent } from './components/dashboard-admin/dialog-send-message/dialog-send-message.component';
+import { DialogAddInvoiceComponent } from './components/dashboard-admin/dialog-add-invoice/dialog-add-invoice.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
@@ -28,6 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServicesComponent } from './components/services/services.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +45,12 @@ import { ServicesComponent } from './components/services/services.component';
     YourAccountComponent,
     NavbarComponent,
     ServicesComponent,
+    DashboardAdminComponent,
+    DialogPoolComponent,
+    DialogAddPollComponent,
+    DialogSendMessageComponent,
+    DialogAddInvoiceComponent,
+    DashboardComponent,
   ],
   imports: [
     MatCheckboxModule,
@@ -47,6 +60,8 @@ import { ServicesComponent } from './components/services/services.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -59,6 +74,11 @@ import { ServicesComponent } from './components/services/services.component';
     MatRadioModule,
     MatExpansionModule,
     MatToolbarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
   ],
 
   providers: [AuthGuard],

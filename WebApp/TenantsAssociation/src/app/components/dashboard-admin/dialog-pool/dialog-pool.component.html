@@ -1,0 +1,62 @@
+<div class="popup">
+  <h1 mat-dialog-title>Create a new user</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.name"
+        [formControl]="nameValidator"
+        required
+      />
+      <mat-error *ngIf="nameValidator.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.mail"
+        [formControl]="emailValidator"
+        required
+      />
+      <mat-error *ngIf="emailValidator.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        [(ngModel)]="data.password"
+        [formControl]="passwordValidator"
+        required
+      />
+      <mat-error *ngIf="passwordValidator.invalid">{{
+        getErrorMessage()
+      }}</mat-error>
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button
+      [disabled]="isDisabled()"
+      mat-button
+      [mat-dialog-close]="data"
+      cdkFocusInitial
+    >
+      Ok
+    </button>
+  </div>
+</div>

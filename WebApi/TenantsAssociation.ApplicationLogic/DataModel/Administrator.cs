@@ -15,5 +15,6 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public string Email { get; set; }
         public string Password { get; set; }
         public ICollection<Building> Buildings { get; set; }
+        public ICollection<MessageModel> Messages { get; set; }
     }
 }

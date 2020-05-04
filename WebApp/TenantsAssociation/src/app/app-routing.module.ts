@@ -7,10 +7,10 @@ import { AuthGuard } from './services/auth.guard';
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 import { ServicesComponent } from './components/services/services.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
-  //{ path: '', component: InvoicesComponent, canActivate: [AuthGuard] },
-  { path: '', component: DashboardUserComponent, canActivate: [AuthGuard] },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   {
     path: 'your-account',
     component: YourAccountComponent,
