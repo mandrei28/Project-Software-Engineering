@@ -9,5 +9,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         User GetUserByUserId(Guid userId);
 
         bool CheckIfEmailExists(string email);
+        User CheckUserCredentials(User user);
     }
 }

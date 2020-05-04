@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { InvoiceModel } from 'src/app/models/invoice.model';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-invoices',
@@ -22,16 +24,23 @@ export class InvoicesComponent implements OnInit {
   dataSource = new MatTableDataSource<InvoiceModel>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  constructor(public http: HttpClient) {
+  constructor(
+    public http: HttpClient,
+    public userService: UserService,
+    public sessionService: SessionService
+  ) {
     this.getInvoices();
   }
 
   ngOnInit(): void {}
 
   getInvoices() {
-    const userId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
+    const userId = this.userService.getUserId();
     this.http
-      .get<InvoiceModel[]>('https://localhost:44365/invoice/' + userId)
+      .get<InvoiceModel[]>(
+        'https://localhost:44365/invoice/' + userId,
+        this.sessionService.requestOptions
+      )
       .subscribe((response) => {
         console.log(response);
         this.invoices = response;

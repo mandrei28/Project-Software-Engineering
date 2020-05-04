@@ -1,22 +1,20 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <div fxLayout="column" fxLayoutAlign="center center" class="example-container">
   <div class="example-button-row" style="text-align: left;">
-    <button routerLink="/login" mat-button="primary" style="color: gray;">
-      <b>Login</b>
-    </button>
-    <button routerLink="/register" mat-button style="color: #673ab7;">
+    <button mat-button><b>Login</b></button>
+    <button routerLink="/register" mat-button style="color: gray;">
       <b>Register</b>
     </button>
   </div>
-
-  <!-- Email-->
-
   <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
     <input
       matInput
+      placeholder="Email"
       [formControl]="emailFormControl"
       [errorStateMatcher]="matcher"
-      placeholder="Ex. pat@example.com"
       required
     />
 
@@ -26,14 +24,12 @@
         !emailFormControl.hasError('required')
       "
     >
-      Please enter a valid email address
+      Email not valid
     </mat-error>
     <mat-error *ngIf="emailFormControl.hasError('required')">
       Email is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-
-  <!-- Password-->
 
   <mat-form-field class="example-full-width">
     <input
@@ -43,7 +39,6 @@
       [formControl]="passwordFormControl"
       required
     />
-
     <mat-error *ngIf="passwordFormControl.invalid">{{
       getErrorMessage()
     }}</mat-error>
@@ -57,21 +52,26 @@
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
   </mat-form-field>
-
-  <!-- Sign-Up button-->
-
   <div class="example-button-row">
     <button
-      mat-raised-button
-      color="primary"
       style="width: 90%;"
+      (click)="login()"
+      mat-raised-button="primary"
       [disabled]="
         emailFormControl.value?.length &lt; 8 ||
         passwordFormControl.value?.length &lt; 8
       "
-      (click)="register()"
     >
-      Sign up
+      <b>Log In</b>
     </button>
   </div>
+  <a
+    type="button"
+    mdbBtn
+    floating="true"
+    size="lg"
+    color="fb"
+    class="waves-light"
+    mdbWavesEffect
+  ></a>
 </div>

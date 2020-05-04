@@ -7,5 +7,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
     public interface IAdministratorRepository : IRepository<Administrator>
     {
+        Administrator CheckUserCredentials(Administrator administrator);
+        Administrator GetAdministratorByUserId(Guid userId);
     }
 }

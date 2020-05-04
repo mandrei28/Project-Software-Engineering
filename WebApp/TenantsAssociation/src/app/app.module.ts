@@ -21,12 +21,23 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChartsModule } from 'ng2-charts';
 import { MatRadioModule } from '@angular/material/radio';
 
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/auth.guard';
+import { YourAccountComponent } from './components/your-account/your-account.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ServicesComponent } from './components/services/services.component';
 @NgModule({
   declarations: [
     AppComponent,
     InvoicesComponent,
     DashboardUserComponent,
     RegisterComponent,
+    LoginComponent,
+    YourAccountComponent,
+    NavbarComponent,
+    ServicesComponent,
   ],
   imports: [
     MatCheckboxModule,
@@ -46,9 +57,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSortModule,
     ChartsModule,
     MatRadioModule,
+    MatExpansionModule,
+    MatToolbarModule,
   ],
 
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

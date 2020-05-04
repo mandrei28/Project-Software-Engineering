@@ -1,26 +1,19 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  margin-top: 25vh;
-  border-radius: 30px;
-  border: 2px solid #673ab7;
-  padding: 4vh;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  margin-top: 30vh;
 }
 
 .example-container > * {
-  @media only screen and (min-width: 768px) {
-    width: 60%;
+  @media only screen and (min-width: 960px) {
+    width: 30%;
   }
-  @media only screen and (max-width: 768px) {
-    width: 100%;
+  @media only screen and (max-width: 960px) {
+    width: 70%;
   }
 }
 .example-button-row {
   text-align: left;
-  margin-bottom: 1vh;
 }
 .example-button-row button,
 .example-button-row a {

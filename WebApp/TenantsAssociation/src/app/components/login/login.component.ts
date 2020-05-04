@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from '@angular/forms';
-import { UserModel } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
 import { MyErrorStateMatcher } from 'src/app/services/error-state.service';
+import { Validators, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { UserModel } from 'src/app/models/user.model';
+
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent {
   hide = true;
   matcher = new MyErrorStateMatcher();
 
@@ -21,27 +17,28 @@ export class RegisterComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
+
   passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(8),
   ]);
-  constructor(public userService: UserService) {}
+
+  constructor(private userService: UserService) {}
 
   getErrorMessage() {
     return this.passwordFormControl.hasError('required')
-      ? 'Password cannot be empty'
+      ? 'Password is required'
       : this.passwordFormControl.hasError('minlength')
-      ? 'Use 8 or more characters'
+      ? 'Password must be at least 8 characters'
       : '';
   }
 
-  ngOnInit() {}
-  register() {
+  login() {
     let user: UserModel = {
       Email: this.emailFormControl.value,
-      Name: 'Dragos',
+      Name: '',
       Password: this.passwordFormControl.value,
     };
-    this.userService.register(user);
+    this.userService.login(user);
   }
 }

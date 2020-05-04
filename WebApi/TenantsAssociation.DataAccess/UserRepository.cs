@@ -24,5 +24,10 @@ namespace TenantsAssociation.DataAccess
                 return true;
             return false;
         }
+        public User CheckUserCredentials(User user)
+        {
+            var userDbo = dbContext.Users.SingleOrDefault(x => x.Email == user.Email && x.Password == user.Password);
+            return userDbo;
+        }
     }
 }
