@@ -8,7 +8,7 @@ namespace TenantsAssociation.ApplicationLogic.DtoModels
     {
         public string Text { get; set; }
         public DateTime DateCreated { get; set; }
-        public Guid AdministratorId { get; set; }
+        public string AdministratorId { get; set; }
         public string Email { get; set; }
     }
 }
