@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 
 namespace TenantsAssociation.ApplicationLogic.Services
 {
@@ -23,5 +24,11 @@ namespace TenantsAssociation.ApplicationLogic.Services
             var currentUser = userRepository.GetUserByUserId(userId);
             return currentUser.GetInvoicesForApartment(apartmentId);
         }
+        public IEnumerable<Invoice> GetAllOverdueInvoices(Guid userId,DueDate dueDate)
+        {
+            var currentUser = userRepository.GetUserByUserId(userId);
+            return currentUser.GetOverdueInvoices(dueDate);
+        }
+
     }
 }

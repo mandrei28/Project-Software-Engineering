@@ -6,6 +6,12 @@ import {
   monkeyPatchChartJsLegend,
   monkeyPatchChartJsTooltip,
 } from 'ng2-charts';
+import { HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
+import { SessionService } from 'src/app/services/session.service';
+import { InvoiceModel } from 'src/app/models/invoice.model';
+import { DatePipe } from '@angular/common';
+import { DueDate } from 'src/app/models/duedate.model';
 @Component({
   selector: 'app-dashboard-user',
   templateUrl: './dashboard-user.component.html',
@@ -30,10 +36,38 @@ export class DashboardUserComponent implements OnInit {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
+  invoices: InvoiceModel[];
 
-  constructor() {
+  today_date: string;
+
+  constructor(
+    public http: HttpClient,
+    public userService: UserService,
+    public sessionService: SessionService,
+    private datePipe: DatePipe
+  ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
+
+    this.getOverdueInvoices();
+  }
+
+  getOverdueInvoices() {
+    this.today_date = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
+    let duedate: DueDate = {
+      dueDate: this.today_date,
+    };
+    const userId = this.userService.getUserId();
+    this.http
+      .post<InvoiceModel[]>(
+        'https://localhost:44365/invoice/' + userId,
+        duedate,
+        this.sessionService.requestOptions
+      )
+      .subscribe((response) => {
+        console.log(response);
+        this.invoices = response;
+      });
   }
 
   ngOnInit(): void {}

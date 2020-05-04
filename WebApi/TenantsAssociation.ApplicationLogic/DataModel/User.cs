@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 using TenantsAssociation.ApplicationLogic.Exceptions;
 
 namespace TenantsAssociation.ApplicationLogic.DataModel
@@ -25,6 +26,7 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
             foreach (var apartment in Apartments)
             {
                 invoiceList.AddRange(apartment.Invoices);
+
             }
             return invoiceList.AsEnumerable();
         }
@@ -37,5 +39,18 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
             }
             return apartment.Invoices.AsEnumerable();
         }
+        public IEnumerable<Invoice> GetOverdueInvoices(DueDate dueDate)
+        {
+            var invoiceList = new List<Invoice>();
+            foreach (var apartment in Apartments)
+            {
+                invoiceList.AddRange(apartment.Invoices);
+
+            }
+            var date = DateTime.Parse(dueDate.dueDate);
+
+            return invoiceList.Where(i=>DateTime.Compare(i.DueDate,date)<0).AsEnumerable();
+        }
+
     }
 }
