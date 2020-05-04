@@ -26,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddPollComponent } from './components/dashboard-admin/dialog-add-poll/dialog-add-poll.component';
 import { DialogSendMessageComponent } from './components/dashboard-admin/dialog-send-message/dialog-send-message.component';
 import { DialogAddInvoiceComponent } from './components/dashboard-admin/dialog-add-invoice/dialog-add-invoice.component';
+import { MatListModule } from '@angular/material/list';
 
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
@@ -35,6 +36,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +82,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatListModule,
   ],
 
-  providers: [AuthGuard],
+  providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

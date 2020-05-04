@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 using TenantsAssociation.ApplicationLogic.Services;
 
 namespace TenantsAssociation.Controllers
@@ -27,6 +28,13 @@ namespace TenantsAssociation.Controllers
         {
             var invoices = invoiceService.GetAllInvoices(userId);
             return invoices;
+        }
+        [HttpPost("{userId}")]
+        public IEnumerable<Invoice> GetUserOverdueInvoices([FromBody]DueDate dueDate,Guid userId)
+        {
+            var invoices = invoiceService.GetAllOverdueInvoices(userId,dueDate);
+            return invoices;
+
         }
     }
 }
