@@ -5,10 +5,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { YourAccountComponent } from './components/your-account/your-account.component';
+import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
+import { ServicesComponent } from './components/services/services.component';
 
 const appRoutes: Routes = [
   //{ path: '', component: InvoicesComponent, canActivate: [AuthGuard] },
-  { path: '', component: YourAccountComponent, canActivate: [AuthGuard] },
+  { path: '', component: DashboardUserComponent, canActivate: [AuthGuard] },
+  {
+    path: 'your-account',
+    component: YourAccountComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard] },
+  { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   // otherwise redirect to home

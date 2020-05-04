@@ -22,6 +22,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ServicesComponent } from './components/services/services.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     RegisterComponent,
     LoginComponent,
     YourAccountComponent,
+    NavbarComponent,
+    ServicesComponent,
   ],
   imports: [
     MatCheckboxModule,
@@ -48,6 +53,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HttpClientModule,
     MatSortModule,
     MatExpansionModule,
+    MatToolbarModule,
   ],
 
   providers: [AuthGuard],

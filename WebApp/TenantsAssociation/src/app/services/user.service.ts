@@ -45,8 +45,22 @@ export class UserService {
     return true;
   }
   getUserId() {
-    var token = localStorage.getItem('currentUser');
-    var tokenInfo = this.jwtHelper.decodeToken(token);
-    return tokenInfo.nameid;
+    if (localStorage.getItem('currentUser')) {
+      var token = localStorage.getItem('currentUser');
+      var tokenInfo = this.jwtHelper.decodeToken(token);
+      return tokenInfo.nameid;
+    }
+  }
+  getUserType() {
+    if (localStorage.getItem('currentUser')) {
+      var token = localStorage.getItem('currentUser');
+      var tokenInfo = this.jwtHelper.decodeToken(token);
+      if (tokenInfo.role === 'admin') return true;
+      else return false;
+    }
+  }
+  isLoggedIn() {
+    if (localStorage.getItem('currentUser')) return true;
+    return false;
   }
 }

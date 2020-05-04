@@ -48,7 +48,4 @@ export class InvoicesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
   }
-  logout() {
-    this.userService.logout();
-  }
 }
