@@ -10,6 +10,7 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
     {
         public Guid Id { get; set; }
         public int InvoiceNumber { get; set; }
+        public Guid ApartmentId { get; set; }
         public float Bill { get; set; }
         public string Description { get; set; }
         [Column(TypeName = "Date")]

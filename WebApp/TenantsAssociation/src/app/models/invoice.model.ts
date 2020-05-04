@@ -19,7 +19,7 @@ export class MessageModel {
 export interface User {
   name: string;
   password: string;
-  mail: string;
+  email: string;
 }
 
 export class Poll {

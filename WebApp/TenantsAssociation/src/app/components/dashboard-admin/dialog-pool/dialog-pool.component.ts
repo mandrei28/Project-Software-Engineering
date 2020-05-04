@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from 'src/app/models/invoice.model';
+import { User, Invoice } from 'src/app/models/invoice.model';
 import { FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dialog-pool',
@@ -10,6 +11,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class DialogPoolComponent {
   constructor(
+    public http: HttpClient,
     public dialogRef: MatDialogRef<DialogPoolComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User
   ) {}
@@ -44,5 +46,12 @@ export class DialogPoolComponent {
       this.passwordValidator.invalid ||
       this.nameValidator.invalid;
     return val;
+  }
+  createUser() {
+    this.http
+      .post<User>('https://localhost:44365/Admin/createUser', this.data)
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 }

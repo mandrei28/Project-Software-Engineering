@@ -35,7 +35,7 @@ export class DashboardAdminComponent {
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(DialogPoolComponent, {
       width: '20em',
-      data: { name: ' ', mail: '', password: '' },
+      data: { name: ' ', email: '', password: '' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -112,14 +112,6 @@ export class DashboardAdminComponent {
     const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
     this.http
       .post<Invoice>('https://localhost:44365/admin/createPoll', this.poll)
-      .subscribe((response) => {
-        console.log(response);
-      });
-  }
-
-  createUser() {
-    this.http
-      .post<Invoice>('https://localhost:44365/admin/createUser', this.user)
       .subscribe((response) => {
         console.log(response);
       });

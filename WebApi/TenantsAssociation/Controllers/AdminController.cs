@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.Abstractions;
@@ -35,8 +36,8 @@ namespace TenantsAssociation.Controllers
         {
             await _adminService.AddInvoiceAsync(invoice);
         }
-
-        [HttpGet("createUser")]
+        [AllowAnonymous]
+        [HttpPost("createUser")]
         public async Task CreateUserAsync(User user)
         {
             await _adminService.AddUserAsync(user);

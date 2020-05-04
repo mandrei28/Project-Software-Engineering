@@ -17,7 +17,7 @@
       <mat-label>Email</mat-label>
       <input
         matInput
-        [(ngModel)]="data.mail"
+        [(ngModel)]="data.email"
         [formControl]="emailValidator"
         required
       />
@@ -55,6 +55,7 @@
       mat-button
       [mat-dialog-close]="data"
       cdkFocusInitial
+      (click)="createUser()"
     >
       Ok
     </button>
