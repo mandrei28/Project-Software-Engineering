@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 using TenantsAssociation.ApplicationLogic.Services;
 
 namespace TenantsAssociation.Controllers
@@ -25,13 +26,14 @@ namespace TenantsAssociation.Controllers
             return _adminService.GetLastMessage(adminId);
         }
 
-        [HttpGet("createPoll")]
+        [AllowAnonymous]
+        [HttpPost("createPoll")]
         public async Task CreatePollAsync(Poll poll)
         {
             await _adminService.CreatePollAsync(poll);
         }
 
-        [HttpGet("addInvoice")]
+        [HttpPost("addInvoice")]
         public async Task AddInvoiceAsync(Invoice invoice)
         {
             await _adminService.AddInvoiceAsync(invoice);
@@ -43,8 +45,9 @@ namespace TenantsAssociation.Controllers
             await _adminService.AddUserAsync(user);
         }
 
-        [HttpGet("sendMessage")]
-        public async Task SendMessageAsync(MessageModel message)
+        [AllowAnonymous]
+        [HttpPost("sendMessage")]
+        public async Task SendMessageAsync(MessageView message)
         {
             await _adminService.SendMessageAsync(message);
         }

@@ -33,6 +33,7 @@ namespace TenantsAssociation.DataAccess
         public async Task CreatePollAsync(Poll poll)
         {
             await dbContext.Polls.AddAsync(poll);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task AddUserASync(User user)
@@ -44,11 +45,18 @@ namespace TenantsAssociation.DataAccess
         public async Task AddInvoiceAsync(Invoice invoice)
         {
             await dbContext.Invoices.AddAsync(invoice);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task SendMessageAsync(MessageModel message)
         {
             await dbContext.Messages.AddAsync(message);
+            await dbContext.SaveChangesAsync();
+        }
+        public Guid GetAdministratorByEmail(string email)
+        {
+            var id = dbContext.Users.Where(u => u.Email == email).FirstOrDefault().Id;
+            return id;
         }
     }
 }

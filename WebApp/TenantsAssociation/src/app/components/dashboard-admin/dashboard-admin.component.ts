@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { DialogPoolComponent } from './dialog-pool/dialog-pool.component';
+import { DialogPoolComponent } from './dialog-user/dialog-pool.component';
 import {
   MatDialog,
   MatDialogRef,
@@ -94,17 +94,6 @@ export class DashboardAdminComponent {
       .subscribe((response) => {
         console.log(response);
         this.message = response;
-      });
-  }
-
-  sendMessage() {
-    this.http
-      .post<Invoice>(
-        'https://localhost:44365/admin/sendMessage',
-        this.messageToSend
-      )
-      .subscribe((response) => {
-        console.log(response);
       });
   }
 

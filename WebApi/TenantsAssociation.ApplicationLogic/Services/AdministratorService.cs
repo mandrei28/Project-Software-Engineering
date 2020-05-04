@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 using TenantsAssociation.ApplicationLogic.Exceptions;
 
 namespace TenantsAssociation.ApplicationLogic.Services
@@ -36,9 +37,21 @@ namespace TenantsAssociation.ApplicationLogic.Services
             await this.administratorRepository.AddInvoiceAsync(invoice);
         }
 
-        public async Task SendMessageAsync(MessageModel message)
+        public async Task SendMessageAsync(MessageView message)
         {
-            await this.administratorRepository.SendMessageAsync(message);
+            MessageModel newMessage = createMessage(message);
+            await this.administratorRepository.SendMessageAsync(newMessage);
+        }
+
+        private MessageModel createMessage(MessageView message)
+        {
+            return new MessageModel
+            {
+                UserId = administratorRepository.GetAdministratorByEmail(message.Email),
+                Text = message.Text,
+                AdministratorId = message.AdministratorId,
+                DateCreated = DateTime.Now
+            };
         }
     }
 }

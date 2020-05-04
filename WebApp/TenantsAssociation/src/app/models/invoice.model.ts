@@ -39,4 +39,5 @@ export class Message {
   email: string;
   text: string;
   dateCreated: Date;
+  adminId: string;
 }

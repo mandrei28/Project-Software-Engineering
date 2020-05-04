@@ -21,7 +21,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChartsModule } from 'ng2-charts';
 import { MatRadioModule } from '@angular/material/radio';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { DialogPoolComponent } from './components/dashboard-admin/dialog-pool/dialog-pool.component';
+import { DialogPoolComponent } from './components/dashboard-admin/dialog-user/dialog-pool.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogAddPollComponent } from './components/dashboard-admin/dialog-add-poll/dialog-add-poll.component';
 import { DialogSendMessageComponent } from './components/dashboard-admin/dialog-send-message/dialog-send-message.component';

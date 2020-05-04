@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TenantsAssociation.ApplicationLogic.DataModel
+namespace TenantsAssociation.ApplicationLogic.DtoModels
 {
-    public class MessageModel
+    public class MessageView
     {
-        public Guid Id { get; set; }
         public string Text { get; set; }
         public DateTime DateCreated { get; set; }
         public Guid AdministratorId { get; set; }
-        public Guid UserId { get; set; }
+        public string Email { get; set; }
     }
 }

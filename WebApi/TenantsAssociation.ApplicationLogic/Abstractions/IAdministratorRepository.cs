@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.DtoModels;
 
 namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
@@ -20,5 +21,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         Task AddInvoiceAsync(Invoice invoice);
 
         Task SendMessageAsync(MessageModel message);
+        Guid GetAdministratorByEmail(string email);
     }
 }

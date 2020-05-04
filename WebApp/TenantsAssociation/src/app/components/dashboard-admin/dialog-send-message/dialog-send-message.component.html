@@ -1,5 +1,5 @@
 <div class="popup">
-  <h1 mat-dialog-title>Create a new poll</h1>
+  <h1 mat-dialog-title>Send a new message</h1>
   <div mat-dialog-content>
     <mat-form-field>
       <mat-label>Email</mat-label>
@@ -21,15 +21,17 @@
       />
       <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Date</mat-label>
-      {{ data.dateCreated }}
-      <mat-error *ngIf="validator.invalid">{{ getErrorMessage() }}</mat-error>
-    </mat-form-field>
+    <br />
+    {{ data.dateCreated }}
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data" [disabled]="isDisabled()">
+    <button
+      mat-button
+      (click)="sendMessage()"
+      [mat-dialog-close]="data"
+      [disabled]="isDisabled()"
+    >
       Ok
     </button>
   </div>
