@@ -6,13 +6,14 @@ import {
   monkeyPatchChartJsLegend,
   monkeyPatchChartJsTooltip,
 } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-dashboard-user',
   templateUrl: './dashboard-user.component.html',
   styleUrls: ['./dashboard-user.component.scss'],
 })
 export class DashboardUserComponent implements OnInit {
-  //radio-button
   a = 2;
   favoriteChoice: string;
   choice: string[] = ['9:00', '10:00', '11:00'];
@@ -30,8 +31,16 @@ export class DashboardUserComponent implements OnInit {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-
-  constructor() {
+  today_date: string;
+  test: string;
+  public dateFrom: string = '2016-10-01';
+  constructor(private datePipe: DatePipe) {
+    {
+      this.today_date = datePipe.transform(Date.now(), 'yyyy-MM-dd');
+    }
+    if (this.today_date > this.dateFrom) {
+      this.test = this.dateFrom;
+    }
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }

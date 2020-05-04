@@ -11,5 +11,6 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public int StreetNumber { get; set; }
         public string BuildingNumber { get; set; }
         public ICollection<Poll> Polls { get; set; }
+        public string Messsage { get; set; }
     }
 }
