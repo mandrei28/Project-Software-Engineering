@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import {
   SingleDataSet,
@@ -12,12 +12,18 @@ import { SessionService } from 'src/app/services/session.service';
 import { InvoiceModel } from 'src/app/models/invoice.model';
 import { DatePipe } from '@angular/common';
 import { DueDate } from 'src/app/models/duedate.model';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-dashboard-user',
   templateUrl: './dashboard-user.component.html',
   styleUrls: ['./dashboard-user.component.scss'],
 })
 export class DashboardUserComponent implements OnInit {
+  displayedColumns: string[] = ['InvoiceNo', 'Description'];
+
+  dataSource = new MatTableDataSource<InvoiceModel>();
+
   //radio-button
   a = 2;
   favoriteChoice: string;

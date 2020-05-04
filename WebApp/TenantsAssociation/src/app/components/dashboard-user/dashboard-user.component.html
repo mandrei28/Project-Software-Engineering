@@ -49,14 +49,38 @@
 
   <div class="flex-child green">
     <h2><p style="text-align: center;">Unpaid Invoices</p></h2>
+    <div class="mat-elevation-z8">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="InvoiceNo">
+            <th mat-header-cell *matHeaderCellDef>InvoiceNo</th>
+          </ng-container>
 
-    <mat-list role="list" *ngFor="let invoice of invoices">
-      <mat-list-item role="listitem">
-        <ul>
-          <li>{{ invoice.description }}</li>
-        </ul>
-      </mat-list-item>
-    </mat-list>
+          <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        *ngFor="let invoice of invoices"
+      >
+        <ng-container matColumnDef="InvoiceNo">
+          <th mat-header-cell *matHeaderCellDef>{{ invoice.invoiceNumber }}</th>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+          <th mat-header-cell *matHeaderCellDef>{{ invoice.description }}</th>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </div>
 </div>
 
