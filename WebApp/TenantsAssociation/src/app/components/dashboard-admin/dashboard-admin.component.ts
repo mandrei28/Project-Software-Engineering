@@ -16,6 +16,7 @@ import { DialogAddPollComponent } from './dialog-add-poll/dialog-add-poll.compon
 import { DialogAddInvoiceComponent } from './dialog-add-invoice/dialog-add-invoice.component';
 import { DialogSendMessageComponent } from './dialog-send-message/dialog-send-message.component';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -28,7 +29,11 @@ export class DashboardAdminComponent {
   poll: Poll;
   invoice: Invoice;
   messageToSend: Message;
-  constructor(public dialog: MatDialog, public http: HttpClient) {
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog,
+    public http: HttpClient
+  ) {
     this.getLastMessage();
   }
 
@@ -88,7 +93,7 @@ export class DashboardAdminComponent {
   }
 
   getLastMessage() {
-    const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
+    const adminId = this.userService.getUserId();
     this.http
       .get<MessageModel>('https://localhost:44365/admin/' + adminId)
       .subscribe((response) => {
