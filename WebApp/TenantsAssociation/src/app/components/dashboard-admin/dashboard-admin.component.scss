@@ -1,5 +1,9 @@
 @import "~@angular/material/theming";
 
+.header {
+  margin-top: 3em;
+}
+
 .dashboard {
   margin: 5em;
   margin-left: 15em;
@@ -8,8 +12,17 @@
 .button {
   margin: 0.3em;
   width: 100%;
-  background-color: #d4eef1;
+  background-color: #3f51b5;
+  color: white;
 }
 #text {
   font-family: Ubuntu;
+}
+
+h3 {
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 0px;
 }

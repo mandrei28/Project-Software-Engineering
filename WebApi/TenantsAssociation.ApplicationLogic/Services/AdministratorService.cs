@@ -18,9 +18,11 @@ namespace TenantsAssociation.ApplicationLogic.Services
             this.administratorRepository = administratorRepository;
             this.tokenCreator = tokenCreator;
         }
-        public MessageModel GetLastMessage(Guid id)
+        public MessageView GetLastMessage(Guid id)
         {
-            return this.administratorRepository.GetLastMessage(id);
+            var lastMessage = administratorRepository.GetLastMessage(id);
+            return new MessageView { DateCreated = lastMessage.DateCreated, Text = lastMessage.Text, Email = administratorRepository.GetUserEmail(lastMessage.UserId) };
+
         }
 
         public async Task CreatePollAsync(Poll poll)

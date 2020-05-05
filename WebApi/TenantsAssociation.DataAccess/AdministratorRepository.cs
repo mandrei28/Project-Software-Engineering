@@ -26,7 +26,7 @@ namespace TenantsAssociation.DataAccess
         }
         public MessageModel GetLastMessage(Guid adminId)
         {
-            var message = dbContext.Messages.Where(u => u.Id == adminId).OrderByDescending(m => m.DateCreated).FirstOrDefault();
+            var message = dbContext.Messages.Where(u => u.AdministratorId == adminId).OrderByDescending(m => m.DateCreated).FirstOrDefault();
             return message;
         }
 
@@ -57,6 +57,12 @@ namespace TenantsAssociation.DataAccess
         {
             var id = dbContext.Users.Where(u => u.Email == email).FirstOrDefault().Id;
             return id;
+        }
+
+        public string GetUserEmail(Guid id)
+        {
+            var email = dbContext.Users.Where(u => u.Id == id).FirstOrDefault().Email;
+            return email;
         }
     }
 }

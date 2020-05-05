@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { DialogPoolComponent } from './dialog-user/dialog-pool.component';
 import {
   MatDialog,
@@ -11,11 +11,11 @@ import {
   User,
   Poll,
   Invoice,
+  Message,
 } from 'src/app/models/invoice.model';
 import { DialogAddPollComponent } from './dialog-add-poll/dialog-add-poll.component';
 import { DialogAddInvoiceComponent } from './dialog-add-invoice/dialog-add-invoice.component';
 import { DialogSendMessageComponent } from './dialog-send-message/dialog-send-message.component';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -23,8 +23,8 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './dashboard-admin.component.html',
   styleUrls: ['./dashboard-admin.component.scss'],
 })
-export class DashboardAdminComponent {
-  message: MessageModel;
+export class DashboardAdminComponent implements OnInit {
+  message: Message;
   user: User;
   poll: Poll;
   invoice: Invoice;
@@ -33,7 +33,8 @@ export class DashboardAdminComponent {
     private userService: UserService,
     public dialog: MatDialog,
     public http: HttpClient
-  ) {
+  ) {}
+  ngOnInit(): void {
     this.getLastMessage();
   }
 
@@ -95,7 +96,7 @@ export class DashboardAdminComponent {
   getLastMessage() {
     const adminId = this.userService.getUserId();
     this.http
-      .get<MessageModel>('https://localhost:44365/admin/' + adminId)
+      .get<Message>('https://localhost:44365/admin/' + adminId)
       .subscribe((response) => {
         console.log(response);
         this.message = response;

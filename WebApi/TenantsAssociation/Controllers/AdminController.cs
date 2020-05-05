@@ -21,7 +21,7 @@ namespace TenantsAssociation.Controllers
         }
 
         [HttpGet("{adminId}")]
-        public MessageModel GetLastMessage(Guid adminId)
+        public MessageView GetLastMessage(Guid adminId)
         {
             return _adminService.GetLastMessage(adminId);
         }

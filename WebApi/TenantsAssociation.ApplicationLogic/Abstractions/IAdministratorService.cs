@@ -9,7 +9,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 {
     public interface IAdministratorService
     {
-        MessageModel GetLastMessage(Guid id);
+        MessageView GetLastMessage(Guid id);
         Task CreatePollAsync(Poll poll);
 
         Task AddUserAsync(User user);
