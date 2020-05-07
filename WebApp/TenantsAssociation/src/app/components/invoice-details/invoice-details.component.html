@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="example-container">
+  <h1 id="text">Invoice Details</h1>
+  <mat-form-field class="example-full-width">
+    <mat-label>Invoice Id</mat-label>
+    <input matInput [value]="invoice?.id" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Invoice Number</mat-label>
+    <input matInput [value]="invoice?.invoiceNumber" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Apartment Id</mat-label>
+    <input matInput [value]="invoice?.apartmentId" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput [value]="invoice?.description" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Created date</mat-label>
+    <input matInput [value]="invoice?.createdDate" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Due Date</mat-label>
+    <input matInput [value]="invoice?.dueDate" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Pay Date</mat-label>
+    <input matInput [value]="invoice?.payDate" disabled />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Paid</mat-label>
+    <input matInput [value]="invoice?.paid == 0 ? 'No' : 'Yes'" disabled />
+  </mat-form-field>
+
+  <div class="example-button-row" *ngIf="invoice?.paid == 0">
+    <button
+      mat-raised-button
+      color="primary"
+      style="width: 100%;"
+      (click)="payInvoice()"
+    >
+      Pay
+    </button>
+  </div>
+</div>

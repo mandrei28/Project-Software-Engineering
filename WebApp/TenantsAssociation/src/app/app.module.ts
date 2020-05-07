@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
+import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
 
 @NgModule({
   declarations: [
@@ -54,15 +55,13 @@ import { DatePipe } from '@angular/common';
     DialogSendMessageComponent,
     DialogAddInvoiceComponent,
     DashboardComponent,
+    InvoiceDetailsComponent,
   ],
   imports: [
     MatCheckboxModule,
-    MatButtonModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

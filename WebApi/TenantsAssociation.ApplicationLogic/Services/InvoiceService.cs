@@ -10,9 +10,11 @@ namespace TenantsAssociation.ApplicationLogic.Services
     public class InvoiceService
     {
         private readonly IUserRepository userRepository;
-        public InvoiceService(IUserRepository userRepository)
+        private readonly IInvoiceRepository invoiceRepository;
+        public InvoiceService(IUserRepository userRepository, IInvoiceRepository invoiceRepository)
         {
             this.userRepository = userRepository;
+            this.invoiceRepository = invoiceRepository;
         }
         public IEnumerable<Invoice> GetAllInvoices(Guid userId)
         {
@@ -24,10 +26,20 @@ namespace TenantsAssociation.ApplicationLogic.Services
             var currentUser = userRepository.GetUserByUserId(userId);
             return currentUser.GetInvoicesForApartment(apartmentId);
         }
-        public IEnumerable<Invoice> GetAllOverdueInvoices(Guid userId,DueDate dueDate)
+        public IEnumerable<Invoice> GetAllOverdueInvoices(Guid userId, DueDate dueDate)
         {
             var currentUser = userRepository.GetUserByUserId(userId);
             return currentUser.GetOverdueInvoices(dueDate);
+        }
+        public Invoice GetInvoiceByInvoiceId(Guid invoiceId)
+        {
+            return invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+        }
+        public void PayInvoice(Guid invoiceId)
+        {
+            var invoice = invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+            invoice.Paid = 1;
+            invoiceRepository.Update(invoice);
         }
 
     }

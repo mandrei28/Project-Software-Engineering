@@ -19,5 +19,6 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public DateTime DueDate { get; set; }
         [Column(TypeName = "Date")]
         public DateTime PayDate { get; set; }
+        public int Paid { get; set; }
     }
 }

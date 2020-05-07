@@ -8,6 +8,7 @@ import { YourAccountComponent } from './components/your-account/your-account.com
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -18,6 +19,11 @@ const appRoutes: Routes = [
   },
   { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard] },
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
+  {
+    path: 'invoice/edit/:invoiceId',
+    component: InvoiceDetailsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   // otherwise redirect to home
