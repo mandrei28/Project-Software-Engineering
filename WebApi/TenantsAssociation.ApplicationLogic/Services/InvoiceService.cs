@@ -4,6 +4,7 @@ using System.Text;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
 using TenantsAssociation.ApplicationLogic.DtoModels;
+using TenantsAssociation.ApplicationLogic.Exceptions;
 
 namespace TenantsAssociation.ApplicationLogic.Services
 {
@@ -38,6 +39,8 @@ namespace TenantsAssociation.ApplicationLogic.Services
         public void PayInvoice(Guid invoiceId)
         {
             var invoice = invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+            if (invoice.Paid == 1)
+                throw new InvoiceAlreadyPaidException(invoiceId);
             invoice.Paid = 1;
             invoiceRepository.Update(invoice);
         }

@@ -23,10 +23,15 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public IEnumerable<Invoice> GetInvoices()
         {
             var invoiceList = new List<Invoice>();
+            if (!Apartments.Any())
+                throw new UserHasNoApartmentException();
             foreach (var apartment in Apartments)
             {
                 invoiceList.AddRange(apartment.Invoices);
-
+            }
+            if (!invoiceList.Any())
+            {
+                throw new UserHasNoInvoiceException();
             }
             return invoiceList.AsEnumerable();
         }
@@ -35,6 +40,10 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
             var apartment = Apartments.Where(a => a.Id == apartmentId).FirstOrDefault();
             if (apartment == null)
             {
+                throw new ApartmentNotFoundException(apartmentId);
+            }
+            if (!apartment.Invoices.Any())
+            {
                 throw new ApartmentHasNoInvoiceException(apartmentId);
             }
             return apartment.Invoices.AsEnumerable();
@@ -42,14 +51,26 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public IEnumerable<Invoice> GetOverdueInvoices(DueDate dueDate)
         {
             var invoiceList = new List<Invoice>();
+            if (!Apartments.Any())
+                throw new UserHasNoApartmentException();
             foreach (var apartment in Apartments)
             {
                 invoiceList.AddRange(apartment.Invoices);
-
+            }
+            if (!invoiceList.Any())
+            {
+                throw new UserHasNoInvoiceException();
             }
             var date = DateTime.Parse(dueDate.dueDate);
 
-            return invoiceList.Where(i=>DateTime.Compare(i.DueDate,date)<0).AsEnumerable();
+            var overdueInvoiceList = invoiceList.Where(i => DateTime.Compare(i.DueDate, date) < 0).AsEnumerable();
+
+            if (!overdueInvoiceList.Any())
+            {
+                throw new UserHasNoOverdueInvoiceException();
+            }
+
+            return overdueInvoiceList;
         }
 
     }

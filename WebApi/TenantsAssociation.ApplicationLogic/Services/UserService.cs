@@ -53,72 +53,98 @@ namespace TenantsAssociation.ApplicationLogic.Services
 
         public void ChangeName(YourAccountName name, Guid userId)
         {
-            var user = userRepository.GetUserByUserId(userId);
-            if (user != null)
+            try
             {
-                user.Name = name.name;
-                userRepository.Update(user);
-            }
-            else
-            {
-                var admin = administratorRepository.GetAdministratorByUserId(userId);
-                if (admin != null)
+                var user = userRepository.GetUserByUserId(userId);
+                if (user != null)
                 {
-                    admin.Name = name.name;
-                    administratorRepository.Update(admin);
+                    user.Name = name.name;
+                    userRepository.Update(user);
                 }
-                else
+            }
+            catch
+            {
+                try
+                {
+                    var admin = administratorRepository.GetAdministratorByUserId(userId);
+                    if (admin != null)
+                    {
+                        admin.Name = name.name;
+                        administratorRepository.Update(admin);
+                    }
+                }
+                catch
+                {
                     throw new Exception();
+                }
             }
         }
         public void ChangePassword(YourAccountPassword password, Guid userId)
         {
-            var user = userRepository.GetUserByUserId(userId);
-            if (user != null)
+            try
             {
-                if (user.Password == password.currentPassword)
+                var user = userRepository.GetUserByUserId(userId);
+                if (user != null)
                 {
-                    user.Password = password.newPassword;
-                    userRepository.Update(user);
-                }
-                else
-                    throw new Exception();
-            }
-            else
-            {
-                var admin = administratorRepository.GetAdministratorByUserId(userId);
-                if (admin != null)
-                {
-                    if (admin.Password == password.currentPassword)
+                    if (user.Password == password.currentPassword)
                     {
-                        admin.Password = password.newPassword;
-                        administratorRepository.Update(admin);
+                        user.Password = password.newPassword;
+                        userRepository.Update(user);
                     }
                     else
                         throw new Exception();
                 }
-                else
+            }
+            catch
+            {
+                try
+                {
+                    var admin = administratorRepository.GetAdministratorByUserId(userId);
+                    if (admin != null)
+                    {
+                        if (admin.Password == password.currentPassword)
+                        {
+                            admin.Password = password.newPassword;
+                            administratorRepository.Update(admin);
+                        }
+                        else
+                            throw new Exception();
+                    }
+                }
+                catch
+                {
                     throw new Exception();
+                }
             }
         }
         public void ChangeEmail(YourAccountEmail email, Guid userId)
         {
-            var user = userRepository.GetUserByUserId(userId);
-            if (user != null)
+            if (userRepository.CheckIfEmailExists(email.email))
+                throw new Exception();
+            try
             {
-                user.Email = email.email;
-                userRepository.Update(user);
-            }
-            else
-            {
-                var admin = administratorRepository.GetAdministratorByUserId(userId);
-                if (admin != null)
+                var user = userRepository.GetUserByUserId(userId);
+                if (user != null)
                 {
-                    admin.Email = email.email;
-                    administratorRepository.Update(admin);
+                    user.Email = email.email;
+                    userRepository.Update(user);
                 }
-                else
+            }
+            catch
+            {
+                try
+                {
+                    var admin = administratorRepository.GetAdministratorByUserId(userId);
+                    if (admin != null)
+                    {
+                        admin.Email = email.email;
+                        administratorRepository.Update(admin);
+                    }
+                }
+                catch
+                {
                     throw new Exception();
+                }
             }
         }
     }
