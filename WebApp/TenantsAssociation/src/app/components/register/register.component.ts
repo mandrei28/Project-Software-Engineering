@@ -16,14 +16,19 @@ import { MyErrorStateMatcher } from 'src/app/services/error-state.service';
 export class RegisterComponent implements OnInit {
   hide = true;
   matcher = new MyErrorStateMatcher();
-
+  mailPattern = new RegExp(
+    '^([a-zA-Z0-9_.-]+)@([a-zA-Z0-9_.-]+)\\.([a-zA-Z]{2,5})'
+  );
+  passPattern = new RegExp(
+    '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[?<>{}$!\\._-]).{6,}'
+  );
   emailFormControl = new FormControl('', [
     Validators.required,
-    Validators.email,
+    Validators.pattern(this.mailPattern),
   ]);
   passwordFormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(8),
+    Validators.pattern(this.passPattern),
   ]);
   constructor(public userService: UserService) {}
 

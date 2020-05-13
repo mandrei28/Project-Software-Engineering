@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DatePipe } from '@angular/common';
     MatButtonModule,
     MatIconModule,
     FormsModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
