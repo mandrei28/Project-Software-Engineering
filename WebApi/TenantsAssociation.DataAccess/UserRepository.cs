@@ -17,8 +17,6 @@ namespace TenantsAssociation.DataAccess
         public User GetUserByUserId(Guid userId)
         {
             var user = dbContext.Users.Where(u => u.Id == userId).Include(u => u.Apartments).ThenInclude(a => a.Invoices).FirstOrDefault();
-            if (user == null)
-                throw new UserNotFoundException(userId);
             return user;
         }
         public bool CheckIfEmailExists(string email)

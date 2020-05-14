@@ -12,7 +12,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
     {
         Administrator CheckUserCredentials(Administrator administrator);
         Administrator GetAdministratorByUserId(Guid userId);
-
+        bool CheckIfEmailExists(string email);
         MessageModel GetLastMessage(Guid id);
         Task CreatePollAsync(Poll poll);
 

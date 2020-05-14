@@ -16,8 +16,6 @@ namespace TenantsAssociation.DataAccess
         public Invoice GetInvoiceByInvoiceId(Guid invoiceId)
         {
             var invoice = dbContext.Invoices.SingleOrDefault(i => i.Id == invoiceId);
-            if (invoice == null)
-                throw new InvoiceNotFoundException(invoiceId);
             return invoice;
         }
     }

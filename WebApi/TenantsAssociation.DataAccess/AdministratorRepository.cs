@@ -29,6 +29,12 @@ namespace TenantsAssociation.DataAccess
             var message = dbContext.Messages.Where(u => u.AdministratorId == adminId).OrderByDescending(m => m.DateCreated).FirstOrDefault();
             return message;
         }
+        public bool CheckIfEmailExists(string email)
+        {
+            if (dbContext.Administrators.Any(a => a.Email == email))
+                return true;
+            return false;
+        }
 
         public async Task CreatePollAsync(Poll poll)
         {

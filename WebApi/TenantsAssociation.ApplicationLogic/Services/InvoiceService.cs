@@ -20,25 +20,36 @@ namespace TenantsAssociation.ApplicationLogic.Services
         public IEnumerable<Invoice> GetAllInvoices(Guid userId)
         {
             var currentUser = userRepository.GetUserByUserId(userId);
+            if (currentUser == null)
+                throw new UserNotFoundException(userId);
             return currentUser.GetInvoices();
         }
         public IEnumerable<Invoice> GetInvoicesForApartment(Guid userId, Guid apartmentId)
         {
             var currentUser = userRepository.GetUserByUserId(userId);
+            if (currentUser == null)
+                throw new UserNotFoundException(userId);
             return currentUser.GetInvoicesForApartment(apartmentId);
         }
         public IEnumerable<Invoice> GetAllOverdueInvoices(Guid userId, DueDate dueDate)
         {
             var currentUser = userRepository.GetUserByUserId(userId);
+            if (currentUser == null)
+                throw new UserNotFoundException(userId);
             return currentUser.GetOverdueInvoices(dueDate);
         }
         public Invoice GetInvoiceByInvoiceId(Guid invoiceId)
         {
-            return invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+            var invoice = invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+            if (invoice == null)
+                throw new InvoiceNotFoundException(invoiceId);
+            return invoice;
         }
         public void PayInvoice(Guid invoiceId)
         {
             var invoice = invoiceRepository.GetInvoiceByInvoiceId(invoiceId);
+            if (invoice == null)
+                throw new InvoiceNotFoundException(invoiceId);
             if (invoice.Paid == 1)
                 throw new InvoiceAlreadyPaidException(invoiceId);
             invoice.Paid = 1;

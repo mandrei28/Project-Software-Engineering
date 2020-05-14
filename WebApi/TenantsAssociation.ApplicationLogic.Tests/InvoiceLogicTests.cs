@@ -22,7 +22,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             Guid badGuid = Guid.NewGuid();
             Mock<IUserRepository> userRepositoryMock = new Mock<IUserRepository>();
             Mock<IInvoiceRepository> invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badGuid)).Throws(new UserNotFoundException(badGuid));
+            User user = null;
+            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badGuid)).Returns(user);
             InvoiceService invoiceService = new InvoiceService(userRepositoryMock.Object, invoiceRepositoryMock.Object);
             //act
 
@@ -157,7 +158,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             Guid badApartmentGuid = Guid.NewGuid();
             Mock<IUserRepository> userRepositoryMock = new Mock<IUserRepository>();
             Mock<IInvoiceRepository> invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badUserGuid)).Throws(new UserNotFoundException(badUserGuid));
+            User user = null;
+            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badUserGuid)).Returns(user);
             InvoiceService invoiceService = new InvoiceService(userRepositoryMock.Object, invoiceRepositoryMock.Object);
             //act
 
@@ -300,7 +302,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             DueDate dueDate = new DueDate { dueDate = "2020-05-10" };
             Mock<IUserRepository> userRepositoryMock = new Mock<IUserRepository>();
             Mock<IInvoiceRepository> invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badGuid)).Throws(new UserNotFoundException(badGuid));
+            User user = null;
+            userRepositoryMock.Setup(userRepository => userRepository.GetUserByUserId(badGuid)).Returns(user);
             InvoiceService invoiceService = new InvoiceService(userRepositoryMock.Object, invoiceRepositoryMock.Object);
             //act
 
@@ -488,7 +491,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             Guid badGuid = Guid.NewGuid();
             Mock<IUserRepository> userRepositoryMock = new Mock<IUserRepository>();
             Mock<IInvoiceRepository> invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(invoiceRepository => invoiceRepository.GetInvoiceByInvoiceId(badGuid)).Throws(new InvoiceNotFoundException(badGuid));
+            Invoice invoice = null;
+            invoiceRepositoryMock.Setup(invoiceRepository => invoiceRepository.GetInvoiceByInvoiceId(badGuid)).Returns(invoice);
             InvoiceService invoiceService = new InvoiceService(userRepositoryMock.Object, invoiceRepositoryMock.Object);
             //act
 
@@ -531,7 +535,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             Guid badGuid = Guid.NewGuid();
             Mock<IUserRepository> userRepositoryMock = new Mock<IUserRepository>();
             Mock<IInvoiceRepository> invoiceRepositoryMock = new Mock<IInvoiceRepository>();
-            invoiceRepositoryMock.Setup(invoiceRepository => invoiceRepository.GetInvoiceByInvoiceId(badGuid)).Throws(new InvoiceNotFoundException(badGuid));
+            Invoice invoice = null;
+            invoiceRepositoryMock.Setup(invoiceRepository => invoiceRepository.GetInvoiceByInvoiceId(badGuid)).Returns(invoice);
             InvoiceService invoiceService = new InvoiceService(userRepositoryMock.Object, invoiceRepositoryMock.Object);
             //act
 
