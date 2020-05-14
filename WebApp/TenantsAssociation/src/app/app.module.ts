@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
+import { DialogAddNewsComponent } from './components/dashboard-admin/dialog-add-news/dialog-add-news/dialog-add-news.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DatePipe } from '@angular/common';
     DialogSendMessageComponent,
     DialogAddInvoiceComponent,
     DashboardComponent,
+    DialogAddNewsComponent,
   ],
   imports: [
     MatCheckboxModule,

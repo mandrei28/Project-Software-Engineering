@@ -14,6 +14,7 @@ import { MyErrorStateMatcher } from 'src/app/services/error-state.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  value = '';
   hide = true;
   matcher = new MyErrorStateMatcher();
 

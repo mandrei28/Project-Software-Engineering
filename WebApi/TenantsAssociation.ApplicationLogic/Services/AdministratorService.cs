@@ -40,5 +40,10 @@ namespace TenantsAssociation.ApplicationLogic.Services
         {
             await this.administratorRepository.SendMessageAsync(message);
         }
+
+        public async Task AddNewsAsync(News news)
+        {
+            await this.administratorRepository.AddNewsAsync(news);
+        }
     }
 }

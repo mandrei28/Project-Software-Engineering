@@ -49,5 +49,10 @@ namespace TenantsAssociation.DataAccess
         {
             await dbContext.Messages.AddAsync(message);
         }
+
+        public async Task AddNewsAsync(News news)
+        {
+            await dbContext.News.AddAsync(news);
+        }
     }
 }

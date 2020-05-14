@@ -22,6 +22,10 @@ export interface User {
   mail: string;
 }
 
+export class NewsModel {
+  news: string;
+}
+
 export class Poll {
   question: string;
 }

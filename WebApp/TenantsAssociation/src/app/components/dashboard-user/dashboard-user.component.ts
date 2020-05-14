@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { SessionService } from 'src/app/services/session.service';
 import { InvoiceModel } from 'src/app/models/invoice.model';
+import { NewsModel } from 'src/app/models/invoice.model';
 import { DatePipe } from '@angular/common';
 import { DueDate } from 'src/app/models/duedate.model';
 import { MatTableDataSource } from '@angular/material/table';
@@ -43,6 +44,7 @@ export class DashboardUserComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartPlugins = [];
   invoices: InvoiceModel[];
+  news: NewsModel[];
 
   today_date: string;
 
@@ -54,10 +56,10 @@ export class DashboardUserComponent implements OnInit {
   ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
-
+    this.getNews();
     this.getOverdueInvoices();
   }
-
+  getNews() {}
   getOverdueInvoices() {
     this.today_date = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
     let duedate: DueDate = {

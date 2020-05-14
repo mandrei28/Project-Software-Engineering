@@ -19,5 +19,7 @@ namespace TenantsAssociation.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<MessageModel> Messages { get; set; }
+
+        public DbSet<News> News { get; set; }
     }
 }

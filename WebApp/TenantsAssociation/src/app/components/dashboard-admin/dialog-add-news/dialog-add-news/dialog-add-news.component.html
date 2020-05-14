@@ -1,0 +1,24 @@
+<div class="popup">
+  <h1 mat-dialog-title>Post news</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <textarea
+        [(ngModel)]="data.news"
+        [formControl]="questionValidator"
+        style="height: 10vh;"
+        required
+        matInput
+        #message1
+        placeholder="Post recent news"
+      ></textarea>
+
+      <mat-hint align="end">Characters: {{ message1.value.length }} </mat-hint>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" [disabled]="isDisabled()">
+      Ok
+    </button>
+  </div>
+</div>

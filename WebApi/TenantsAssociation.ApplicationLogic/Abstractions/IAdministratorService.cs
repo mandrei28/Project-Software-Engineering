@@ -16,6 +16,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         Task AddInvoiceAsync(Invoice invoice);
 
         Task SendMessageAsync(MessageModel message);
-
+        Task AddNewsAsync(News news);
     }
 }

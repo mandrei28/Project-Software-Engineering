@@ -11,11 +11,13 @@ import {
   User,
   Poll,
   Invoice,
+  NewsModel,
 } from 'src/app/models/invoice.model';
 import { DialogAddPollComponent } from './dialog-add-poll/dialog-add-poll.component';
 import { DialogAddInvoiceComponent } from './dialog-add-invoice/dialog-add-invoice.component';
 import { DialogSendMessageComponent } from './dialog-send-message/dialog-send-message.component';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { DialogAddNewsComponent } from './dialog-add-news/dialog-add-news/dialog-add-news.component';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -28,6 +30,7 @@ export class DashboardAdminComponent {
   poll: Poll;
   invoice: Invoice;
   messageToSend: Message;
+  news: NewsModel;
   constructor(public dialog: MatDialog, public http: HttpClient) {
     this.getLastMessage();
   }
@@ -41,6 +44,18 @@ export class DashboardAdminComponent {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       this.user = result;
+    });
+  }
+
+  openSendNewsDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddNewsComponent, {
+      width: '35em',
+      data: { question: '' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.news = result;
     });
   }
 
@@ -112,6 +127,15 @@ export class DashboardAdminComponent {
     const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
     this.http
       .post<Invoice>('https://localhost:44365/admin/createPoll', this.poll)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  createNews() {
+    const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
+    this.http
+      .post<Invoice>('https://localhost:44365/admin/createNews', this.news)
       .subscribe((response) => {
         console.log(response);
       });

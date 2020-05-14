@@ -47,6 +47,11 @@ namespace TenantsAssociation.Controllers
         {
             await _adminService.SendMessageAsync(message);
         }
+
+        public async Task AddNewsAsync(News news)
+        {
+            await _adminService.AddNewsAsync(news);
+        }
     }
 
 }
