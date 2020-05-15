@@ -57,4 +57,16 @@ export class YourAccountService {
         (error) => {}
       );
   }
+  sendMessage(message: string) {
+    return this.http
+      .post(
+        'https://localhost:44365/user/message/' + this.userService.getUserId(),
+        JSON.stringify(message),
+        this.sessionService.requestOptions
+      )
+      .subscribe(
+        (response) => {},
+        (error) => {}
+      );
+  }
 }

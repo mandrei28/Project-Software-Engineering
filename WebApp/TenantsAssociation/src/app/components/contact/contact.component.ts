@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { YourAccountService } from 'src/app/services/your-account.service';
 
 @Component({
   selector: 'app-services',
@@ -7,10 +8,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private yourAccountService: YourAccountService) {}
 
   ngOnInit(): void {}
   sendMessage(message: string) {
-    this.userService.sendMessage(message);
+    this.yourAccountService.sendMessage(message);
   }
 }
