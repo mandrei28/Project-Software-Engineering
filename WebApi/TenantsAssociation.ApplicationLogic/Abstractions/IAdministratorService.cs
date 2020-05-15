@@ -18,5 +18,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 
         Task SendMessageAsync(MessageView message);
 
+        List<UserView> GetAllUsers();
+
     }
 }

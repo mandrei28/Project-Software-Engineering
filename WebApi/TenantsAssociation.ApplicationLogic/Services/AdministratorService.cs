@@ -55,5 +55,27 @@ namespace TenantsAssociation.ApplicationLogic.Services
                 DateCreated = DateTime.Now
             };
         }
+
+        public List<UserView> GetAllUsers()
+        {
+            var users = administratorRepository.GetAllUsers();
+            List<UserView> userViews = new List<UserView>();
+            int no = 1;
+            foreach(var user in users)
+            {
+                userViews.Add(
+                    new UserView
+                    {
+                        No = no++,
+                        Name = user.Name,
+                        ApartmentNo = administratorRepository.GetApartmentsNumber(user.Id),
+                        Email = user.Email
+
+                    });
+            }
+
+            return userViews;
+        }
+
     }
 }

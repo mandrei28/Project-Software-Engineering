@@ -23,6 +23,13 @@ export interface User {
   email: string;
 }
 
+export interface UserView {
+  name: string;
+  email: string;
+  no: number;
+  apartmentNo: number;
+}
+
 export class Poll {
   question: string;
 }

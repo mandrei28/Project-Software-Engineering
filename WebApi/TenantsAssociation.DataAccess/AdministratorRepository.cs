@@ -70,5 +70,18 @@ namespace TenantsAssociation.DataAccess
             var email = dbContext.Users.Where(u => u.Id == id).FirstOrDefault().Email;
             return email;
         }
+
+        public List<User> GetAllUsers()
+        {
+            return dbContext.Users.ToList();
+        }
+
+
+        public int GetApartmentsNumber(Guid userId)
+        {
+            int no = 0;
+            no = dbContext.Apartments.Where(u => u.UserId == userId).ToList().Count();
+            return no;
+        }
     }
 }

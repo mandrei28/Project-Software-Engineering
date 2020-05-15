@@ -102,8 +102,8 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             //Act
 
             //Assert            
-            Assert.IsTrue(user.GetInvoices().Count() == 1);
-            //Assert.AreEqual(user.GetInvoices(),invoices.AsEnumerable());
+            //Assert.IsTrue(user.GetInvoices().Count() == 1);
+            CollectionAssert.AreEqual(user.GetInvoices().ToList(),invoices);
         }
 
         [TestMethod]
@@ -147,7 +147,7 @@ namespace TenantsAssociation.ApplicationLogic.Tests
             };
 
             //Assert            
-            Assert.AreEqual(user.GetInvoicesForApartment(apartments[0].Id), invoices.AsEnumerable());
+            CollectionAssert.AreEqual(user.GetInvoicesForApartment(apartments[0].Id).ToList(), invoices);
 
         }
 
