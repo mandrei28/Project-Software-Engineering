@@ -12,3 +12,4 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         User CheckUserCredentials(User user);
     }
 }
+
