@@ -123,5 +123,10 @@ namespace TenantsAssociation.ApplicationLogic.Services
                     throw new Exception();
             }
         }
+        public void SendMessage(string message, Guid userId)
+        {
+            var administrator = administratorRepository.GetRandomAdministrator();
+            userRepository.AddMessage(message, administrator.Id, userId);
+        }
     }
 }

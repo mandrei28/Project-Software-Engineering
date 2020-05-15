@@ -33,5 +33,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         List<User> GetAllUsers();
 
         int GetApartmentsNumber(Guid userId);
+        Administrator GetRandomAdministrator();
     }
 }

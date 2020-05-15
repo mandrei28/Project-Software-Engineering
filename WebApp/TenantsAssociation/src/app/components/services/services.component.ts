@@ -10,10 +10,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-/**
- * @title Basic use of `<table mat-table>`
- */
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -42,7 +38,3 @@ export class ServicesComponent implements OnInit {
       });
   }
 }
-
-/**  Copyright 2019 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */

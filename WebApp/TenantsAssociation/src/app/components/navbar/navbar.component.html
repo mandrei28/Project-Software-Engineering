@@ -6,7 +6,8 @@
     <button mat-button routerLink="invoices" *ngIf="!isAdmin()">
       Invoices
     </button>
-    <button mat-button routerLink="services">Services</button>
+    <button mat-button routerLink="contact" *ngIf="!isAdmin()">Contact</button>
+    <button mat-button routerLink="service" *ngIf="isAdmin()">Services</button>
     <button mat-button routerLink="your-account">Your account</button>
     <button mat-button (click)="logout()">Logout</button>
   </mat-toolbar-row>

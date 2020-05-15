@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { SessionService } from './session.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +14,8 @@ export class UserService {
   constructor(
     private _snackBar: MatSnackBar,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private sessionService: SessionService
   ) {}
 
   register(user: UserModel) {
@@ -76,5 +77,17 @@ export class UserService {
   isLoggedIn() {
     if (localStorage.getItem('currentUser')) return true;
     return false;
+  }
+  sendMessage(message: string) {
+    return this.http
+      .post(
+        'https://localhost:44365/user/message/' + this.getUserId(),
+        JSON.stringify(message),
+        this.sessionService.requestOptions
+      )
+      .subscribe(
+        (response) => {},
+        (error) => {}
+      );
   }
 }

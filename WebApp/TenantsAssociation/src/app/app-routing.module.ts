@@ -6,9 +6,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { YourAccountComponent } from './components/your-account/your-account.component';
 import { DashboardUserComponent } from './components/dashboard-user/dashboard-user.component';
-import { ServicesComponent } from './components/services/services.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
+import { ServicesComponent } from './components/services/services.component';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuard] },
-  { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
+  { path: 'service', component: ServicesComponent, canActivate: [AuthGuard] },
   {
     path: 'invoice/edit/:invoiceId',
     component: InvoiceDetailsComponent,

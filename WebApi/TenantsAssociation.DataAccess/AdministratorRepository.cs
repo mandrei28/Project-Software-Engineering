@@ -83,5 +83,9 @@ namespace TenantsAssociation.DataAccess
             no = dbContext.Apartments.Where(u => u.UserId == userId).ToList().Count();
             return no;
         }
+        public Administrator GetRandomAdministrator()
+        {
+            return dbContext.Administrators.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+        }
     }
 }

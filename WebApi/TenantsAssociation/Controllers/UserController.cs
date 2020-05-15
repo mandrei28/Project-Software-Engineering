@@ -92,5 +92,18 @@ namespace TenantsAssociation.Controllers
                 return Unauthorized();
             }
         }
+        [HttpPost("message/{userId}")]
+        public IActionResult SendMessage([FromBody]string message, Guid userId)
+        {
+            try
+            {
+                userService.SendMessage(message, userId);
+                return Ok();
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+        }
     }
 }
