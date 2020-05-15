@@ -16,7 +16,12 @@
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data" [disabled]="isDisabled()">
+    <button
+      mat-button
+      (click)="createPoll()"
+      [mat-dialog-close]="data"
+      [disabled]="isDisabled()"
+    >
       Ok
     </button>
   </div>

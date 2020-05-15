@@ -105,15 +105,6 @@ export class DashboardAdminComponent implements OnInit {
       });
   }
 
-  createPoll() {
-    const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
-    this.http
-      .post<Invoice>('https://localhost:44365/admin/createPoll', this.poll)
-      .subscribe((response) => {
-        console.log(response);
-      });
-  }
-
   postInvoice() {
     this.http
       .post<Invoice>('https://localhost:44365/admin/addInvoice', this.invoice)
