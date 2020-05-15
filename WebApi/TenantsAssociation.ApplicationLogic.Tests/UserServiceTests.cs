@@ -15,6 +15,30 @@ namespace TenantsAssociation.ApplicationLogic.Tests
     [TestClass]
     public class UserServiceTests
     {
+        [TestMethod()]
+        public void RegisterThrowException_UserAlreadyExistsException()
+        {
+            Mock<IUserRepository> userRepoMock = new Mock<IUserRepository>();
+            Mock<IAdministratorRepository> adminRepoMock = new Mock<IAdministratorRepository>();
+            IOptions<AppSettings> _appSettings = Options.Create<AppSettings>(new AppSettings());
+            Mock<IMapper> mapper = new Mock<IMapper>();
+            ITokenCreator tokenCreator = new TokenCreator(_appSettings);
+
+            User user = new User()
+            {
+                Email = "test@test.com",
+                Password = "asd12345test",
+            };
+
+            userRepoMock.Setup(userRepository => userRepository.CheckIfEmailExists(user.Email)).Returns(true);
+            UserService userService = new UserService(mapper.Object, userRepoMock.Object, tokenCreator, adminRepoMock.Object);
+
+
+
+            //Assert
+            Assert.ThrowsException<UserAlreadyExistsException>(() => userService.Register(user));
+        }
+
         [TestMethod]
         public void Login_ThrowsException_WrongCredentialsExceptionForBothUserAndAdministrator()
         {

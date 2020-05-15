@@ -114,3 +114,5 @@ WebApi/TenantsAssociation/bin/
 WebApi/TenantsAssociation.ApplicationLogic.Tests/bin/
 WebApi/TenantsAssociation.ApplicationLogic.Tests/obj/
 WebApi/TenantsAssociation/.vs/
+WebApi/TennantsAssociation.UnitTest/bin/
+WebApi/TennantsAssociation.UnitTest/obj/
