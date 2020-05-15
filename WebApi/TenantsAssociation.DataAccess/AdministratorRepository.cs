@@ -70,5 +70,9 @@ namespace TenantsAssociation.DataAccess
             var email = dbContext.Users.Where(u => u.Id == id).FirstOrDefault().Email;
             return email;
         }
+        public Administrator GetRandomAdministrator()
+        {
+            return dbContext.Administrators.OrderBy(a => Guid.NewGuid()).Take(1).FirstOrDefault();
+        }
     }
 }

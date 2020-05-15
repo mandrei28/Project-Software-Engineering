@@ -10,5 +10,6 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 
         bool CheckIfEmailExists(string email);
         User CheckUserCredentials(User user);
+        void AddMessage(string message, Guid administratorId, Guid userId);
     }
 }

@@ -12,6 +12,7 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public User()
         {
             Apartments = new List<Apartment>();
+            Messages = new List<MessageModel>();
         }
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -72,6 +73,5 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
 
             return overdueInvoiceList;
         }
-
     }
 }

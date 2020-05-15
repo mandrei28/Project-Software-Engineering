@@ -30,5 +30,17 @@ namespace TenantsAssociation.DataAccess
             var userDbo = dbContext.Users.SingleOrDefault(x => x.Email == user.Email && x.Password == user.Password);
             return userDbo;
         }
+        public void AddMessage(string message, Guid administratorId, Guid userId)
+        {
+            var messageModel = new MessageModel()
+            {
+                AdministratorId = administratorId,
+                DateCreated = DateTime.Now,
+                UserId = userId,
+                Text = message,
+            };
+            dbContext.Messages.Add(messageModel);
+            dbContext.SaveChanges();
+        }
     }
 }

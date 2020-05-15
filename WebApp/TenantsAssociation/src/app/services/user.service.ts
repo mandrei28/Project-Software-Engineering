@@ -3,13 +3,18 @@ import { UserModel } from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { SessionService } from './session.service';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private sessionService: SessionService
+  ) {}
 
   register(user: UserModel) {
     return this.http.post('https://localhost:44365/user', user).subscribe(
@@ -62,5 +67,17 @@ export class UserService {
   isLoggedIn() {
     if (localStorage.getItem('currentUser')) return true;
     return false;
+  }
+  sendMessage(message: string) {
+    return this.http
+      .post(
+        'https://localhost:44365/user/message/' + this.getUserId(),
+        JSON.stringify(message),
+        this.sessionService.requestOptions
+      )
+      .subscribe(
+        (response) => {},
+        (error) => {}
+      );
   }
 }

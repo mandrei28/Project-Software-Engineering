@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <h1 id="text">Contact us</h1>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Tell us the problem</mat-label>
+      <textarea
+        style="min-height: 350px;"
+        matInput
+        placeholder="Ex. My problem is"
+        #message
+      ></textarea>
+    </mat-form-field>
+    <div class="example-button-row">
+      <button
+        mat-raised-button
+        color="primary"
+        style="width: 90%;"
+        (click)="sendMessage(message.value)"
+      >
+        Send message
+      </button>
+    </div>
+  </form>
+
+  <div class="connect">-or call us-</div>
+  <div id="text">07412345678</div>
+  <div id="text">07412345671</div>
+  <div id="text">07412345679</div>
+</div>

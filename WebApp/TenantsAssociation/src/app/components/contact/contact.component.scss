@@ -1,0 +1,54 @@
+#text {
+  font-family: Ubuntu;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.example-form {
+  margin-top: 5rem;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.connect {
+  overflow: hidden;
+  text-align: center;
+  margin-top: 6em;
+  margin-bottom: 2em;
+  color: rgb(160, 160, 160);
+}
+.connect:before,
+.connect:after {
+  color: rgb(192, 192, 192);
+  background-color: rgb(192, 192, 192);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.connect:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+.connect:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+.example-button-row {
+  text-align: left;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+.mat-stroked-button {
+  color: #673ab7;
+}
+.example-button-row {
+  text-align: center !important;
+}

@@ -34,7 +34,7 @@ import { YourAccountComponent } from './components/your-account/your-account.com
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ServicesComponent } from './components/services/services.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
@@ -48,7 +48,7 @@ import { InvoiceDetailsComponent } from './components/invoice-details/invoice-de
     LoginComponent,
     YourAccountComponent,
     NavbarComponent,
-    ServicesComponent,
+    ContactComponent,
     DashboardAdminComponent,
     DialogPoolComponent,
     DialogAddPollComponent,
