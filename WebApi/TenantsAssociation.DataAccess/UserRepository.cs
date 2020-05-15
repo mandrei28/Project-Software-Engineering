@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using TenantsAssociation.ApplicationLogic.Abstractions;
 using TenantsAssociation.ApplicationLogic.DataModel;
+using TenantsAssociation.ApplicationLogic.Exceptions;
 
 namespace TenantsAssociation.DataAccess
 {

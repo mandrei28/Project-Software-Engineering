@@ -78,6 +78,7 @@ namespace TenantsAssociation
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAdministratorRepository, AdministratorRepository>();
             services.AddScoped<IAdministratorService, AdministratorService>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<InvoiceService>();
             services.AddSingleton<ITokenCreator, TokenCreator>();

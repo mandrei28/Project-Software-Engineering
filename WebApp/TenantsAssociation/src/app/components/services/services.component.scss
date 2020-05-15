@@ -1,0 +1,19 @@
+#text {
+  font-family: Ubuntu;
+}
+table {
+  width: 100%;
+}
+td.mat-cell,
+td.mat-footer-cell {
+  padding: 15px;
+  text-align: center;
+}
+th.mat-header-cell {
+  text-align: center;
+}
+
+.row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

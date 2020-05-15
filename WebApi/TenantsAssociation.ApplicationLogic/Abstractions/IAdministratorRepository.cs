@@ -11,9 +11,13 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
     public interface IAdministratorRepository : IRepository<Administrator>
     {
         Administrator CheckUserCredentials(Administrator administrator);
+
         Administrator GetAdministratorByUserId(Guid userId);
 
+        bool CheckIfEmailExists(string email);
+
         MessageModel GetLastMessage(Guid id);
+
         Task CreatePollAsync(Poll poll);
 
         Task AddUserASync(User user);
@@ -21,7 +25,13 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
         Task AddInvoiceAsync(Invoice invoice);
 
         Task SendMessageAsync(MessageModel message);
+
         Guid GetAdministratorByEmail(string email);
+
         string GetUserEmail(Guid id);
+
+        List<User> GetAllUsers();
+
+        int GetApartmentsNumber(Guid userId);
     }
 }

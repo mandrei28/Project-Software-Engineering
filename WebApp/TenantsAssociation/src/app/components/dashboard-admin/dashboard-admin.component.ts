@@ -29,6 +29,7 @@ export class DashboardAdminComponent implements OnInit {
   poll: Poll;
   invoice: Invoice;
   messageToSend: Message;
+  dateCreated: String;
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
@@ -100,6 +101,7 @@ export class DashboardAdminComponent implements OnInit {
       .subscribe((response) => {
         console.log(response);
         this.message = response;
+        this.dateCreated = this.dateFormated(this.message.dateCreated);
       });
   }
 
@@ -118,5 +120,21 @@ export class DashboardAdminComponent implements OnInit {
       .subscribe((response) => {
         console.log(response);
       });
+  }
+
+  dateFormated(createdDate): String {
+    var date = new Date(createdDate);
+    var newDate =
+      date.getFullYear() +
+      '/' +
+      (date.getMonth() + 1) +
+      '/' +
+      date.getDate() +
+      ' ' +
+      date.getHours() +
+      ':' +
+      date.getMinutes();
+
+    return newDate;
   }
 }

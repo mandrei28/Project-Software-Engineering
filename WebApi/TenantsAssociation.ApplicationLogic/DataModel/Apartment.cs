@@ -14,5 +14,6 @@ namespace TenantsAssociation.ApplicationLogic.DataModel
         public int ApartmentNumber { get; set; }
         public Building Building { get; set; }
         public ICollection<Invoice> Invoices { get; set; }
+        public Guid UserId { get; set; }
     }
 }

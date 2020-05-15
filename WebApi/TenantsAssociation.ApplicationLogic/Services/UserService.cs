@@ -103,6 +103,8 @@ namespace TenantsAssociation.ApplicationLogic.Services
         }
         public void ChangeEmail(YourAccountEmail email, Guid userId)
         {
+            if (userRepository.CheckIfEmailExists(email.email) || administratorRepository.CheckIfEmailExists(email.email))
+                throw new Exception();
             var user = userRepository.GetUserByUserId(userId);
             if (user != null)
             {

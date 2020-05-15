@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TenantsAssociation.ApplicationLogic.Exceptions
 {
-    public class UserHasNoInvoiceException : Exception
+    public class UserNotFoundException : Exception
     {
-        public UserHasNoInvoiceException() : base($"Current user has no invoices") { }
+        public UserNotFoundException(Guid id) : base($"User with {id} doesn't exist") { }
     }
 }

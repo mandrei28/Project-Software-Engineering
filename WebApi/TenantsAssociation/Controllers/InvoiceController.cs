@@ -30,11 +30,30 @@ namespace TenantsAssociation.Controllers
             return invoices;
         }
         [HttpPost("{userId}")]
-        public IEnumerable<Invoice> GetUserOverdueInvoices([FromBody]DueDate dueDate,Guid userId)
+        public IEnumerable<Invoice> GetUserOverdueInvoices([FromBody]DueDate dueDate, Guid userId)
         {
-            var invoices = invoiceService.GetAllOverdueInvoices(userId,dueDate);
+            var invoices = invoiceService.GetAllOverdueInvoices(userId, dueDate);
             return invoices;
 
+        }
+        [HttpGet("edit/{invoiceId}")]
+        public Invoice GetInvoiceById(Guid invoiceId)
+        {
+            var invoice = invoiceService.GetInvoiceByInvoiceId(invoiceId);
+            return invoice;
+        }
+        [HttpPost("pay/{invoiceId}")]
+        public IActionResult PayInvoice(Guid invoiceId)
+        {
+            try
+            {
+                invoiceService.PayInvoice(invoiceId);
+                return Ok();
+            }
+            catch
+            {
+                return Unauthorized();
+            }
         }
     }
 }

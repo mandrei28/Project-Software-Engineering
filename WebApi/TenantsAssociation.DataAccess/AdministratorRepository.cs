@@ -29,6 +29,12 @@ namespace TenantsAssociation.DataAccess
             var message = dbContext.Messages.Where(u => u.AdministratorId == adminId).OrderByDescending(m => m.DateCreated).FirstOrDefault();
             return message;
         }
+        public bool CheckIfEmailExists(string email)
+        {
+            if (dbContext.Administrators.Any(a => a.Email == email))
+                return true;
+            return false;
+        }
 
         public async Task CreatePollAsync(Poll poll)
         {
@@ -63,6 +69,19 @@ namespace TenantsAssociation.DataAccess
         {
             var email = dbContext.Users.Where(u => u.Id == id).FirstOrDefault().Email;
             return email;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return dbContext.Users.ToList();
+        }
+
+
+        public int GetApartmentsNumber(Guid userId)
+        {
+            int no = 0;
+            no = dbContext.Apartments.Where(u => u.UserId == userId).ToList().Count();
+            return no;
         }
     }
 }

@@ -38,6 +38,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { InvoiceDetailsComponent } from './components/invoice-details/invoice-details.component';
 
 @NgModule({
   declarations: [
@@ -55,16 +56,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DialogSendMessageComponent,
     DialogAddInvoiceComponent,
     DashboardComponent,
+    InvoiceDetailsComponent,
   ],
   imports: [
     MatCheckboxModule,
-    MatButtonModule,
     MatIconModule,
     FormsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

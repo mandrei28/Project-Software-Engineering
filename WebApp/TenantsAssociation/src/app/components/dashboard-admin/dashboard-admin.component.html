@@ -1,11 +1,12 @@
 <h1 class="header" fxLayoutAlign="center" id="text">Dashboard</h1>
 <div fxLayout="row" fxLayoutAlign="space-around center" class="dashboard">
   <div fxFlex="60">
-    <h2>New Message from {{ message.email }}</h2>
+    <h2>New Message from</h2>
+    <h3>{{ message?.email }}</h3>
     <h3>
-      {{ message.text }}
+      {{ message?.text }}
     </h3>
-    <p>{{ message.dateCreated }}</p>
+    <p>{{ dateCreated }}</p>
   </div>
   <div fxLayout="column">
     <div>

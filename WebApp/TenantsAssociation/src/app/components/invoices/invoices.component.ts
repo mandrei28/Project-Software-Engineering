@@ -5,6 +5,7 @@ import { InvoiceModel } from 'src/app/models/invoice.model';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { SessionService } from 'src/app/services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoices',
@@ -18,6 +19,8 @@ export class InvoicesComponent implements OnInit {
     'Created',
     'Due',
     'Bill',
+    'Paid',
+    'Details',
   ];
   invoices: InvoiceModel[];
 
@@ -27,7 +30,8 @@ export class InvoicesComponent implements OnInit {
   constructor(
     public http: HttpClient,
     public userService: UserService,
-    public sessionService: SessionService
+    public sessionService: SessionService,
+    private router: Router
   ) {
     this.getInvoices();
   }
@@ -42,10 +46,14 @@ export class InvoicesComponent implements OnInit {
         this.sessionService.requestOptions
       )
       .subscribe((response) => {
-        console.log(response);
         this.invoices = response;
         this.dataSource = new MatTableDataSource<InvoiceModel>(this.invoices);
         this.dataSource.paginator = this.paginator;
       });
+  }
+  redirectToEditChallenge(invoice: InvoiceModel) {
+    this.router.navigateByUrl(`/invoice/edit/${invoice.id}`, {
+      state: { invoice },
+    });
   }
 }

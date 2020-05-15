@@ -11,13 +11,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./dialog-send-message.component.scss'],
 })
 export class DialogSendMessageComponent {
+  dateCreated: String;
   constructor(
     private userService: UserService,
     public http: HttpClient,
     public dialogRef: MatDialogRef<DialogSendMessageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Message
   ) {
-    data.dateCreated = new Date();
+    this.dateCreated = this.dateFormated(new Date());
   }
   onNoClick(): void {
     this.dialogRef.close();
@@ -40,5 +41,20 @@ export class DialogSendMessageComponent {
       .subscribe((response) => {
         console.log(response);
       });
+  }
+
+  dateFormated(date): String {
+    var newDate =
+      date.getFullYear() +
+      '/' +
+      (date.getMonth() + 1) +
+      '/' +
+      date.getDate() +
+      ' ' +
+      date.getHours() +
+      ':' +
+      date.getMinutes();
+
+    return newDate;
   }
 }

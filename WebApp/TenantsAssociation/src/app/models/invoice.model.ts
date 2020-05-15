@@ -1,12 +1,13 @@
 export class InvoiceModel {
   id: string;
   invoiceNumber: number;
-  apartment: string;
+  apartmentId: string;
   bill: number;
   description: string;
   createdDate: Date;
   dueDate: Date;
   payDate: Date;
+  paid: number;
 }
 
 export class MessageModel {
@@ -20,6 +21,13 @@ export interface User {
   name: string;
   password: string;
   email: string;
+}
+
+export interface UserView {
+  name: string;
+  email: string;
+  no: number;
+  apartmentNo: number;
 }
 
 export class Poll {
