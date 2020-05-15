@@ -135,7 +135,7 @@ export class DashboardAdminComponent {
   createNews() {
     const adminId = '9245FE4A-D402-451C-B9ED-9C1A04247484';
     this.http
-      .post<Invoice>('https://localhost:44365/admin/createNews', this.news)
+      .post<NewsModel>('https://localhost:44365/admin/createNews', this.news)
       .subscribe((response) => {
         console.log(response);
       });
