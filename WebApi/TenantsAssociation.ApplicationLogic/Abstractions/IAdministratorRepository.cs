@@ -26,7 +26,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 
         Task SendMessageAsync(MessageModel message);
 
-        Guid GetAdministratorByEmail(string email);
+        Guid GetUserByEmail(string email);
 
         string GetUserEmail(Guid id);
 

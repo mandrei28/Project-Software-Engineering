@@ -20,5 +20,7 @@ namespace TenantsAssociation.ApplicationLogic.Abstractions
 
         List<UserView> GetAllUsers();
 
+        MessageModel CreateMessage(MessageView message);
+
     }
 }

@@ -59,7 +59,7 @@ namespace TenantsAssociation.DataAccess
             await dbContext.Messages.AddAsync(message);
             await dbContext.SaveChangesAsync();
         }
-        public Guid GetAdministratorByEmail(string email)
+        public Guid GetUserByEmail(string email)
         {
             var id = dbContext.Users.Where(u => u.Email == email).FirstOrDefault().Id;
             return id;

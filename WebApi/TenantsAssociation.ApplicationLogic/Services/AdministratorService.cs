@@ -12,16 +12,25 @@ namespace TenantsAssociation.ApplicationLogic.Services
     public class AdministratorService : IAdministratorService
     {
         private readonly IAdministratorRepository administratorRepository;
-        private ITokenCreator tokenCreator;
-        public AdministratorService(IAdministratorRepository administratorRepository, ITokenCreator tokenCreator)
+        
+        public AdministratorService(IAdministratorRepository administratorRepository)
         {
             this.administratorRepository = administratorRepository;
-            this.tokenCreator = tokenCreator;
+            
         }
         public MessageView GetLastMessage(Guid id)
         {
             var lastMessage = administratorRepository.GetLastMessage(id);
-            return new MessageView { DateCreated = lastMessage.DateCreated, Text = lastMessage.Text, Email = administratorRepository.GetUserEmail(lastMessage.UserId) };
+            if (lastMessage == null)
+            {
+                throw new AdminHasNoMessageException(id);
+            }
+            var email = administratorRepository.GetUserEmail(lastMessage.UserId);
+            if(email == null)
+            {
+                throw new UserHasNoEmailException(id);
+            }
+            return new MessageView { DateCreated = lastMessage.DateCreated, Text = lastMessage.Text, Email = email };
 
         }
 
@@ -41,15 +50,20 @@ namespace TenantsAssociation.ApplicationLogic.Services
 
         public async Task SendMessageAsync(MessageView message)
         {
-            MessageModel newMessage = createMessage(message);
+            MessageModel newMessage = CreateMessage(message);
             await this.administratorRepository.SendMessageAsync(newMessage);
         }
 
-        private MessageModel createMessage(MessageView message)
+        public MessageModel CreateMessage(MessageView message)
         {
+            var userId = administratorRepository.GetUserByEmail(message.Email);
+            if(userId == Guid.Empty)
+            {
+                throw new UserDontExistException(message.Email);
+            }
             return new MessageModel
             {
-                UserId = administratorRepository.GetAdministratorByEmail(message.Email),
+                UserId = userId,
                 Text = message.Text,
                 AdministratorId = Guid.Parse(message.AdministratorId),
                 DateCreated = DateTime.Now
