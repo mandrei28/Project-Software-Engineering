@@ -68,7 +68,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
                     administratorRepository.Update(admin);
                 }
                 else
-                    throw new Exception();
+                    throw new Exception();// to be defined
             }
         }
         public void ChangePassword(YourAccountPassword password, Guid userId)
@@ -82,7 +82,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
                     userRepository.Update(user);
                 }
                 else
-                    throw new Exception();
+                    throw new Exception();// to be defined
             }
             else
             {
@@ -98,7 +98,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
                         throw new Exception();
                 }
                 else
-                    throw new Exception();
+                    throw new Exception();// to be defined
             }
         }
         public void ChangeEmail(YourAccountEmail email, Guid userId)
@@ -120,7 +120,7 @@ namespace TenantsAssociation.ApplicationLogic.Services
                     administratorRepository.Update(admin);
                 }
                 else
-                    throw new Exception();
+                    throw new Exception();// to be defined
             }
         }
         public void SendMessage(string message, Guid userId)
